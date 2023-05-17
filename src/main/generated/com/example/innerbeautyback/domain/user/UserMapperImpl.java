@@ -1,5 +1,6 @@
 package com.example.innerbeautyback.domain.user;
 
+import com.example.innerbeautyback.business.Status;
 import com.example.innerbeautyback.business.login.LoginResponse;
 import com.example.innerbeautyback.business.users.UserResponse;
 import com.example.innerbeautyback.domain.user.contact.Contact;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-05-17T16:43:26+0300",
+    date = "2023-05-17T19:06:04+0300",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 @Component
@@ -41,6 +42,8 @@ public class UserMapperImpl implements UserMapper {
         user.setContact( userResponseToContact( userResponse ) );
         user.setEmail( userResponse.getUserEmail() );
         user.setPassword( userResponse.getUserPassword() );
+
+        user.setStatus( Status.ACTIVE.getLetter() );
 
         return user;
     }

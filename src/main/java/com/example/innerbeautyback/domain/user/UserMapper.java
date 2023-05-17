@@ -1,11 +1,14 @@
 package com.example.innerbeautyback.domain.user;
 
+import com.example.innerbeautyback.business.Status;
 import com.example.innerbeautyback.business.login.LoginResponse;
 import com.example.innerbeautyback.business.users.UserResponse;
+import com.example.innerbeautyback.domain.image.Image;
+import com.example.innerbeautyback.util.ImageUtil;
 import org.mapstruct.*;
-import com.example.innerbeautyback.business.Status;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
+
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING, imports = {Status.class})
 public interface UserMapper {
     @Mapping(source = "id", target = "userId")
     @Mapping(source = "role.name", target = "roleName")
@@ -16,9 +19,18 @@ public interface UserMapper {
     @Mapping(source = "userEmail", target = "email")
     @Mapping(source = "userPassword", target = "password")
     @Mapping(source = "roleName", target = "role.name")
-    // @Mapping(expression = "java(Status.ACTIVE.getLetter())", target = "status")
+    @Mapping(expression = "java(Status.ACTIVE.getLetter())", target = "status")
     @Mapping(source = "contactFirstname", target = "contact.firstname")
     @Mapping(source = "contactLastname", target = "contact.lastname")
-    @Mapping(ignore = true, target = "image")
+    //@Mapping(source = "imageData", target = "image", qualifiedByName = "imageDataToImage")
     User toRegisterUser(UserResponse userResponse);
+
+
+//    @Named("imageDataToImage")
+//    static Image imageDataToImage(String imageData) {
+//        if (imageData.isEmpty()) {
+//            return null;
+//        }
+//        return new Image(ImageUtil.base64ImageDataToByteArray(imageData));
+//    }
 }

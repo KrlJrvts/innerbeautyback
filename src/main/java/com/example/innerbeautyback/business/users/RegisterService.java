@@ -22,13 +22,10 @@ public class RegisterService {
     @Transactional
     public void addUser(UserResponse userResponse) {
         userService.validateActiveUserBy(userResponse.getUserEmail());
-        //TODO: validateActiveUserBy
         User user = createUser(userResponse);
-        //TODO: createUser
         // addImageIfPresent(user.getimage());
         // TODO: addImageIfPresent
         userService.addUser(user);
-        //TODO: addUser
 
 
     }
