@@ -26,7 +26,9 @@ public class LoginController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK"),
             @ApiResponse(responseCode = "403", description = "Vale kasutajanimi või parool", content = @Content(schema = @Schema(implementation = ApiError.class)))})
-    public void  login(@RequestParam String username, @RequestParam String password) {
+    public LoginResponse login(@RequestParam String email, @RequestParam String password) {
+        return loginService.login(email, password);
+
     }
 }
 
