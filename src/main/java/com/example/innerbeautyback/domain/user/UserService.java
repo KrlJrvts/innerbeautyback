@@ -14,8 +14,8 @@ public class UserService {
     @Resource
     private UserRepository userRepository;
 
-    public User findActiveUserBy(String username, String password) {
-        Optional<User> userOptional = userRepository.findUserBy(username, password, ACTIVE.getLetter());
+    public User findActiveUserBy(String email, String password) {
+        Optional<User> userOptional = userRepository.findUserBy(email, password, ACTIVE.getLetter());
         ValidationService.validateCorrectUserCredentials(userOptional);
         User user = userOptional.get();
         return user;
