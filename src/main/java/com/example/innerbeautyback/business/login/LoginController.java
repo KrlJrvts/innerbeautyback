@@ -19,10 +19,10 @@ public class LoginController {
     private LoginService loginService;
 
     @GetMapping("/login")
-    @Operation(summary = "Sisse logimine. Tagastab userId ja roleName",
+    @Operation(summary = "Login. Returns userId and roleName",
             description = """
-                    Süsteemist otsitakse emaili ja password abil kasutajat, kelle konto on ka aktiivne.
-                    Kui vastet ei leita vistakse viga errorCode'ga 111""")
+                    System searches for user with username and password, whose account is also active.
+                    If no match is found, error with errorCode 111 is thrown""")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK"),
             @ApiResponse(responseCode = "403", description = "Wrong email or password", content = @Content(schema = @Schema(implementation = ApiError.class)))})
