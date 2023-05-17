@@ -11,4 +11,10 @@ public class ValidationService {
             throw new BusinessException(Error.INCORRECT_CREDENTIALS.getMessage(), Error.INCORRECT_CREDENTIALS.getErrorCode());
         }
     }
+
+    public static void validateUserEmailIsAvailable(boolean userExists) {
+        if (userExists) {
+            throw  new BusinessException(Error.USER_UNAVAILABLE.getMessage(), Error.USER_UNAVAILABLE.getErrorCode());
+        }
+    }
 }

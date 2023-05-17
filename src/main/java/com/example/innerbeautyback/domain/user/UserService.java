@@ -6,7 +6,7 @@ import com.example.innerbeautyback.validation.ValidationService;
 
 import java.util.Optional;
 
-import static com.example.innerbeautyback.business.Status.ACTIVE;
+import com.example.innerbeautyback.business.Status;
 
 @Service
 public class UserService {
@@ -15,9 +15,17 @@ public class UserService {
     private UserRepository userRepository;
 
     public User findActiveUserBy(String email, String password) {
-        Optional<User> userOptional = userRepository.findUserBy(email, password, ACTIVE.getLetter());
+        Optional<User> userOptional = userRepository.findUserBy(email, password, Status.ACTIVE.getLetter());
         ValidationService.validateCorrectUserCredentials(userOptional);
-        User user = userOptional.get();
-        return user;
+        return userOptional.get();
+    }
+
+    public void validateActiveUserBy(String userEmail) {
+        boolean userExists = userRepository.activeUserExistsBy(userEmail, Status.ACTIVE.getLetter());
+        ValidationService.validateUserEmailIsAvailable(userExists);
+    }
+
+    public void addUser(User user) {
+        userRepository.save(user);
     }
 }
