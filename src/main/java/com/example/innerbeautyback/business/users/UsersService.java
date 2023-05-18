@@ -1,6 +1,5 @@
-package com.example.innerbeautyback.business.users.dto;
+package com.example.innerbeautyback.business.users;
 
-import com.example.innerbeautyback.business.users.UserRequest;
 import com.example.innerbeautyback.domain.image.Image;
 import com.example.innerbeautyback.domain.image.ImageService;
 import com.example.innerbeautyback.domain.user.User;
