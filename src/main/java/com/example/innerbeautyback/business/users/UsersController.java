@@ -1,8 +1,9 @@
 package com.example.innerbeautyback.business.users;
 
 
-import com.example.innerbeautyback.business.users.dto.RegisterService;
+import com.example.innerbeautyback.business.users.dto.UsersService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,7 +15,7 @@ public class UsersController {
 
 
     @Resource
-    private RegisterService registerService;
+    private UsersService usersService;
 
     @PostMapping("/register")
     @Operation(summary = "Register new user by email, password, firstName, lastName",
@@ -22,10 +23,10 @@ public class UsersController {
                     User enters email, password, firstName, lastName. And will get automatically userId, roleName, 
                     status. System also checks if email is already in use. If it is, error with errorCode 112 is thrown""")
     @ApiResponses(value = {
-            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "OK"),
-            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "403", description = "Email already in use")})
-    public void addUser(@RequestBody UserResponse userResponse) {
-        registerService.addUser(userResponse);
+            @ApiResponse(responseCode = "200", description = "OK"),
+            @ApiResponse(responseCode = "403", description = "Email already in use")})
+    public void addUser(@RequestBody UserRequest userRequest) {
+        usersService.addUser(userRequest);
     }
 
 

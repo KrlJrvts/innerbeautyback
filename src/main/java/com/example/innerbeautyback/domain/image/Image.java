@@ -4,8 +4,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Data
-@RequiredArgsConstructor
-@NoArgsConstructor(force = true)
+@NoArgsConstructor
 @Entity
 @Table(name = "image")
 public class Image {
@@ -15,7 +14,10 @@ public class Image {
     private Integer id;
 
     @NotNull
-    @NonNull
     @Column(name = "data", nullable = false)
     private byte[] data;
+
+    public Image(byte[] data) {
+        this.data = data;
+    }
 }

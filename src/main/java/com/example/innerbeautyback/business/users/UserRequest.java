@@ -12,12 +12,10 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserResponse implements Serializable {
-    private Integer userId;
+public class UserRequest implements Serializable {
     private String userEmail;
     private String userPassword;
     private String userImage;
     private String contactFirstname;
     private String contactLastname;
-    private String roleName;
 }
