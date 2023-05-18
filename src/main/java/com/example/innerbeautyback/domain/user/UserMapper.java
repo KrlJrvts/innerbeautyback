@@ -26,13 +26,13 @@ public interface UserMapper {
     User toRegisterUser(UserResponse userResponse);
 
 
-//    @Named("imageDataToImage")
-//    static Image imageDataToImage(String imageData) {
-//        if (imageData.isEmpty()) {
-//            return null;
-//        }
-//        return new Image(ImageUtil.base64ImageDataToByteArray(imageData));
-//    }
+    @Named("imageDataToImage")
+    static Image imageDataToImage(String imageData) {
+        if (imageData.isEmpty()) {
+            return null;
+        }
+        return new Image(ImageUtil.base64ImageDataToByteArray(imageData));
+    }
 
     @Named("imageToImageData")
     static String imageToImageData(Image image) {

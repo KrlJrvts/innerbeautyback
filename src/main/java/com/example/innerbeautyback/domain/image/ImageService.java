@@ -1,6 +1,5 @@
+package com.example.innerbeautyback.domain.image;
 
-
-import com.example.innerbeautyback.domain.image.Image;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +10,9 @@ public class ImageService {
     private ImageRepository imageRepository;
 
     public void addImage(Image image) {
+
         imageRepository.save(image);
     }
+
 }
-}
+
