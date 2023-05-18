@@ -22,7 +22,7 @@ public interface UserMapper {
     @Mapping(expression = "java(Status.ACTIVE.getLetter())", target = "status")
     @Mapping(source = "contactFirstname", target = "contact.firstname")
     @Mapping(source = "contactLastname", target = "contact.lastname")
-    // @Mapping(source = "userImage", target = "image.data", qualifiedByName = "imageToImageData")
+    @Mapping(source = "userImage", target = "image.data", qualifiedByName = "imageToImageData")
     User toRegisterUser(UserResponse userResponse);
 
 
