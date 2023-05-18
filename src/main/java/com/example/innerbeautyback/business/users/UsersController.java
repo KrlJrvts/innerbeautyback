@@ -1,6 +1,7 @@
 package com.example.innerbeautyback.business.users;
 
 
+import com.example.innerbeautyback.business.users.dto.RegisterService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.annotation.Resource;
