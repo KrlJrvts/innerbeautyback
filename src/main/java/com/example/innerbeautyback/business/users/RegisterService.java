@@ -16,14 +16,14 @@ public class RegisterService {
     @Resource
     private UserMapper userMapper;
 
-    // @Resource
-    // private ImageService imageService;
+    @Resource
+    private ImageService imageService;
 
     @Transactional
     public void addUser(UserResponse userResponse) {
         userService.validateActiveUserBy(userResponse.getUserEmail());
         User user = createUser(userResponse);
-        // addImageIfPresent(user.getimage());
+        addImageIfPresent(user.getimage());
         // TODO: addImageIfPresent
         userService.addUser(user);
 
