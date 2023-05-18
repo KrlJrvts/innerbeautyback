@@ -22,7 +22,7 @@ public interface UserMapper {
     @Mapping(expression = "java(Status.ACTIVE.getLetter())", target = "status")
     @Mapping(source = "contactFirstname", target = "contact.firstname")
     @Mapping(source = "contactLastname", target = "contact.lastname")
-    //@Mapping(source = "imageData", target = "image", qualifiedByName = "imageDataToImage")
+    // @Mapping(source = "userImage", target = "image.data", qualifiedByName = "imageToImageData")
     User toRegisterUser(UserResponse userResponse);
 
 
@@ -33,4 +33,12 @@ public interface UserMapper {
 //        }
 //        return new Image(ImageUtil.base64ImageDataToByteArray(imageData));
 //    }
+
+    @Named("imageToImageData")
+    static String imageToImageData(Image image) {
+        if (image == null) {
+            return "";
+        }
+        return ImageUtil.byteArrayToBase64ImageData(image.getData());
+    }
 }
