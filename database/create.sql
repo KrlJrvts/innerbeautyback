@@ -1,21 +1,18 @@
 -- Created by Vertabelo (http://vertabelo.com)
 -- Last modification date: 2023-05-16 08:50:50.153
-
 -- tables
--- Table: bloodtype
-CREATE TABLE bloodtype (
-                           id serial  NOT NULL,
-                           type varchar(10)  NOT NULL,
-                           CONSTRAINT bloodtype_pk PRIMARY KEY (id)
+-- Table: bloodgroup
+CREATE TABLE bloodgroup (
+                            id serial  NOT NULL,
+                            type varchar(10)  NOT NULL,
+                            CONSTRAINT bloodgroup_pk PRIMARY KEY (id)
 );
-
 -- Table: category
 CREATE TABLE category (
                           id serial  NOT NULL,
                           name varchar(50)  NOT NULL,
                           CONSTRAINT category_pk PRIMARY KEY (id)
 );
-
 -- Table: contact
 CREATE TABLE contact (
                          id serial  NOT NULL,
@@ -23,14 +20,12 @@ CREATE TABLE contact (
                          lastname varchar(50)  NOT NULL,
                          CONSTRAINT contact_pk PRIMARY KEY (id)
 );
-
 -- Table: country
 CREATE TABLE country (
                          id serial  NOT NULL,
                          name varchar(255)  NOT NULL,
                          CONSTRAINT country_pk PRIMARY KEY (id)
 );
-
 -- Table: favorite
 CREATE TABLE favorite (
                           id serial  NOT NULL,
@@ -38,21 +33,18 @@ CREATE TABLE favorite (
                           product_id int  NOT NULL,
                           CONSTRAINT favorite_pk PRIMARY KEY (id)
 );
-
 -- Table: gender
 CREATE TABLE gender (
                         id serial  NOT NULL,
                         name varchar(255)  NOT NULL,
                         CONSTRAINT gender_pk PRIMARY KEY (id)
 );
-
 -- Table: image
 CREATE TABLE image (
                        id serial  NOT NULL,
                        data bytea  NOT NULL,
                        CONSTRAINT image_pk PRIMARY KEY (id)
 );
-
 -- Table: product
 CREATE TABLE product (
                          id serial  NOT NULL,
@@ -64,18 +56,16 @@ CREATE TABLE product (
                          category_id int  NOT NULL,
                          country_id int  NOT NULL,
                          gender_id int  NOT NULL,
-                         bloodtype_id int  NOT NULL,
+                         bloodgroup_id int  NOT NULL,
                          image_id int  NULL,
                          CONSTRAINT product_pk PRIMARY KEY (id)
 );
-
 -- Table: role
 CREATE TABLE role (
                       id serial  NOT NULL,
                       name varchar(50)  NOT NULL,
                       CONSTRAINT role_pk PRIMARY KEY (id)
 );
-
 -- Table: user
 CREATE TABLE "user" (
                         id serial  NOT NULL,
@@ -87,7 +77,6 @@ CREATE TABLE "user" (
                         role_id int  NOT NULL,
                         CONSTRAINT user_pk PRIMARY KEY (id)
 );
-
 -- Table: user_product
 CREATE TABLE user_product (
                               id serial  NOT NULL,
@@ -96,7 +85,6 @@ CREATE TABLE user_product (
                               buyer_id int  NULL,
                               CONSTRAINT user_product_pk PRIMARY KEY (id)
 );
-
 -- foreign keys
 -- Reference: favorite_product (table: favorite)
 ALTER TABLE favorite ADD CONSTRAINT favorite_product
@@ -105,7 +93,6 @@ ALTER TABLE favorite ADD CONSTRAINT favorite_product
         NOT DEFERRABLE
             INITIALLY IMMEDIATE
 ;
-
 -- Reference: favorite_user (table: favorite)
 ALTER TABLE favorite ADD CONSTRAINT favorite_user
     FOREIGN KEY (buyer_id)
@@ -113,15 +100,13 @@ ALTER TABLE favorite ADD CONSTRAINT favorite_user
         NOT DEFERRABLE
             INITIALLY IMMEDIATE
 ;
-
--- Reference: product_bloodtype (table: product)
-ALTER TABLE product ADD CONSTRAINT product_bloodtype
-    FOREIGN KEY (bloodtype_id)
-        REFERENCES bloodtype (id)
+-- Reference: product_bloodgroup (table: product)
+ALTER TABLE product ADD CONSTRAINT product_bloodgroup
+    FOREIGN KEY (bloodgroup_id)
+        REFERENCES bloodgroup (id)
         NOT DEFERRABLE
             INITIALLY IMMEDIATE
 ;
-
 -- Reference: product_category (table: product)
 ALTER TABLE product ADD CONSTRAINT product_category
     FOREIGN KEY (category_id)
@@ -129,7 +114,6 @@ ALTER TABLE product ADD CONSTRAINT product_category
         NOT DEFERRABLE
             INITIALLY IMMEDIATE
 ;
-
 -- Reference: product_country (table: product)
 ALTER TABLE product ADD CONSTRAINT product_country
     FOREIGN KEY (country_id)
@@ -137,7 +121,6 @@ ALTER TABLE product ADD CONSTRAINT product_country
         NOT DEFERRABLE
             INITIALLY IMMEDIATE
 ;
-
 -- Reference: product_gender (table: product)
 ALTER TABLE product ADD CONSTRAINT product_gender
     FOREIGN KEY (gender_id)
@@ -145,7 +128,6 @@ ALTER TABLE product ADD CONSTRAINT product_gender
         NOT DEFERRABLE
             INITIALLY IMMEDIATE
 ;
-
 -- Reference: product_image (table: product)
 ALTER TABLE product ADD CONSTRAINT product_image
     FOREIGN KEY (image_id)
@@ -153,7 +135,6 @@ ALTER TABLE product ADD CONSTRAINT product_image
         NOT DEFERRABLE
             INITIALLY IMMEDIATE
 ;
-
 -- Reference: user_data (table: user)
 ALTER TABLE "user" ADD CONSTRAINT user_data
     FOREIGN KEY (contact_id)
@@ -161,7 +142,6 @@ ALTER TABLE "user" ADD CONSTRAINT user_data
         NOT DEFERRABLE
             INITIALLY IMMEDIATE
 ;
-
 -- Reference: user_image (table: user)
 ALTER TABLE "user" ADD CONSTRAINT user_image
     FOREIGN KEY (image_id)
@@ -169,7 +149,6 @@ ALTER TABLE "user" ADD CONSTRAINT user_image
         NOT DEFERRABLE
             INITIALLY IMMEDIATE
 ;
-
 -- Reference: user_product_buyer (table: user_product)
 ALTER TABLE user_product ADD CONSTRAINT user_product_buyer
     FOREIGN KEY (buyer_id)
@@ -177,7 +156,6 @@ ALTER TABLE user_product ADD CONSTRAINT user_product_buyer
         NOT DEFERRABLE
             INITIALLY IMMEDIATE
 ;
-
 -- Reference: user_product_product (table: user_product)
 ALTER TABLE user_product ADD CONSTRAINT user_product_product
     FOREIGN KEY (product_id)
@@ -185,7 +163,6 @@ ALTER TABLE user_product ADD CONSTRAINT user_product_product
         NOT DEFERRABLE
             INITIALLY IMMEDIATE
 ;
-
 -- Reference: user_product_seller (table: user_product)
 ALTER TABLE user_product ADD CONSTRAINT user_product_seller
     FOREIGN KEY (seller_id)
@@ -193,7 +170,6 @@ ALTER TABLE user_product ADD CONSTRAINT user_product_seller
         NOT DEFERRABLE
             INITIALLY IMMEDIATE
 ;
-
 -- Reference: user_role (table: user)
 ALTER TABLE "user" ADD CONSTRAINT user_role
     FOREIGN KEY (role_id)
@@ -201,6 +177,4 @@ ALTER TABLE "user" ADD CONSTRAINT user_role
         NOT DEFERRABLE
             INITIALLY IMMEDIATE
 ;
-
 -- End of file.
-

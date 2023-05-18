@@ -1,4 +1,4 @@
-package com.example.innerbeautyback.domain.product.bloodtype;
+package com.example.innerbeautyback.domain.product.bloodgroup;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -9,8 +9,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "bloodtype")
-public class Bloodtype {
+@Table(name = "bloodgroup")
+public class BloodGroup {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)

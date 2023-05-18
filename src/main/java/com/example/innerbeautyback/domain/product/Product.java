@@ -1,7 +1,7 @@
 package com.example.innerbeautyback.domain.product;
 
 import com.example.innerbeautyback.domain.image.Image;
-import com.example.innerbeautyback.domain.product.bloodtype.Bloodtype;
+import com.example.innerbeautyback.domain.product.bloodgroup.BloodGroup;
 import com.example.innerbeautyback.domain.product.category.Category;
 import com.example.innerbeautyback.domain.product.country.Country;
 import com.example.innerbeautyback.domain.product.gender.Gender;
@@ -61,8 +61,8 @@ public class Product {
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "bloodtype_id", nullable = false)
-    private Bloodtype bloodtype;
+    @JoinColumn(name = "bloodgroup_id", nullable = false)
+    private BloodGroup bloodgroup;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "image_id")
