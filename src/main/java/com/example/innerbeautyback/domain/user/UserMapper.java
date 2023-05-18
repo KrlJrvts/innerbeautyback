@@ -15,7 +15,6 @@ public interface UserMapper {
     LoginResponse toLoginResponse(User user);
 
 
-
     @Mapping(source = "userEmail", target = "email")
     @Mapping(source = "userPassword", target = "password")
     @Mapping(expression = "java(Status.ACTIVE.getLetter())", target = "status")
