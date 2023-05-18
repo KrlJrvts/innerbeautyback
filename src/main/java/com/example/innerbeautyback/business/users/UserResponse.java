@@ -16,7 +16,7 @@ public class UserResponse implements Serializable {
     private Integer userId;
     private String userEmail;
     private String userPassword;
-    private String userImage;
+    private byte[] userImage;
     private String contactFirstname;
     private String contactLastname;
     private String roleName;

@@ -26,7 +26,7 @@ public class RegisterService {
     public void addUser(UserResponse userResponse) {
         userService.validateActiveUserBy(userResponse.getUserEmail());
         User user = createUser(userResponse);
-        addImageIfPresent((Image) user.getimage());
+        addImageIfPresent((Image) user.getImage());
         // TODO: addImageIfPresent
         userService.addUser(user);
 

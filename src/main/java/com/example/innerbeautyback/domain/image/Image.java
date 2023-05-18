@@ -15,7 +15,7 @@ public class Image {
     private Integer id;
 
     @NotNull
+    @NonNull
     @Column(name = "data", nullable = false)
     private byte[] data;
-
-    }
+}
