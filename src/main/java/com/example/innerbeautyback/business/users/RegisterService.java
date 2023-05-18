@@ -26,8 +26,10 @@ public class RegisterService {
     public void addUser(UserResponse userResponse) {
         userService.validateActiveUserBy(userResponse.getUserEmail());
         User user = createUser(userResponse);
+        // TODO: 18.05.2023 otsi ülesse õige roll (user), kas id või name abil - roleService->roleRepository
+        //  saate kätte role objekti
+        //  panete userile külge (setter)
         addImageIfPresent((Image) user.getImage());
-        // TODO: addImageIfPresent
         userService.addUser(user);
 
 
@@ -37,8 +39,6 @@ public class RegisterService {
         if (ImageUtil.imageIsPresent(image)){
             imageService.addImage(image);
         }
-        return;
-
     }
 
     private User createUser(UserResponse userResponse) {
