@@ -1,4 +1,4 @@
-package com.example.innerbeautyback.business.products;
+package com.example.innerbeautyback.business.category;
 
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.annotation.Resource;
@@ -8,17 +8,18 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class ProductController {
+public class CategoriesController {
 
     @Resource
-    private ProductService productService;
+    private CategoriesService categoriesService;
+
 
     @GetMapping("/store")
     @Operation(
             summary = "...",
             description = " Returns product info with ...")
-    public List<ProductDto> getProducts() {
-        List<ProductDto> product = productService.getProducts();
-        return product;
+    public List<CategoryRequest> getCategories() {
+        List<CategoryRequest> category = categoriesService.getCategories();
+        return category;
     }
 }
