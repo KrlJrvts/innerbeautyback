@@ -20,11 +20,12 @@ public class ProductController {
 
     @GetMapping("/store")
     @Operation(
-            summary = "...",
-            description = " Returns product info with ...")
+            summary = "Returns all Product category names to storeView",
+            description = " Returns product category names to storeView which shall be put under Product Category picture")
     public List<CategoryRequest> getCategories() {
         return categoriesService.getCategories();
     }
+
 
     @GetMapping("/store/products")
     @Operation(
