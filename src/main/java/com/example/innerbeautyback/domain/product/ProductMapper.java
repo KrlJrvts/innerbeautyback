@@ -15,11 +15,11 @@ public interface ProductMapper {
     @Mapping(source = "availableAt", target = "productAvailableAt")
     @Mapping(source = "price", target = "productPrice")
     @Mapping(source = "status", target = "productStatus")
-    @Mapping(source = "category", target = "categoryName")
-    @Mapping(source = "country", target = "countryName")
-    @Mapping(source = "gender", target = "genderName")
-    @Mapping(source = "bloodgroup", target = "bloodgroupType")
-    @Mapping(source = "image", target = "imageData")
+    @Mapping(source = "category.name", target = "categoryName")
+    @Mapping(source = "country.name", target = "countryName")
+    @Mapping(source = "gender.name", target = "genderName")
+    @Mapping(source = "bloodgroup.type", target = "bloodgroupType")
+    @Mapping(source = "image", target = "imageData",qualifiedByName = "imageToImageData")
     ProductResponse toDto(Product product);
 
     @Named("imageDataToImage")
@@ -38,6 +38,6 @@ public interface ProductMapper {
         return ImageUtil.byteArrayToBase64ImageData(image.getData());
     }
 
+    List<ProductResponse> toProductResponse(List<Product> products);
 
-    List<Product> toProductResponse(List<Product> products);
 }

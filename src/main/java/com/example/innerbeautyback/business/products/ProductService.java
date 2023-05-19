@@ -20,15 +20,13 @@ public class ProductService {
     private ProductMapper productMapper;
 
     public List<ProductResponse> getProducts() {
-
-
         return null;
     }
 
     public List<ProductResponse> getProductsBy(Integer categoryId) {
         List<Product> products = productsService.getProductsBy(categoryId);
-        productMapper.toProductResponse(products);
+        List<ProductResponse> productResponse = productMapper.toProductResponse(products);
 
-        return null;
+        return productResponse;
     }
 }

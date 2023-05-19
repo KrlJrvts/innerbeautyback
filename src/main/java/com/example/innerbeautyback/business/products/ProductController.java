@@ -50,7 +50,7 @@ public class ProductController {
             @ApiResponse(responseCode = "200", description = "OK"),
             @ApiResponse(responseCode = "403", description = "Requested Category not found", content = @Content(schema = @Schema(implementation = ApiError.class)))})
     public List<ProductResponse> getProductsBy(@RequestParam Integer categoryId) {
-        List<ProductResponse> productResponse = productService.getProductsBy(categoryId);
-        return null;
+        return productService.getProductsBy(categoryId);
+
     }
 }
