@@ -25,9 +25,4 @@ public class ProductResponse implements Serializable {
     private String genderName;
     private String bloodgroupType;
     private String imageData;
-
-    public void setId(Integer id) {
-
-
-    }
 }

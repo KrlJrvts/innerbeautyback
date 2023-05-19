@@ -30,5 +30,6 @@ public class LoginController {
         return loginService.login(email, password);
 
     }
+
 }
 
