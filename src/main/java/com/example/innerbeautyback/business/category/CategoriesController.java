@@ -19,7 +19,6 @@ public class CategoriesController {
             summary = "...",
             description = " Returns product info with ...")
     public List<CategoryRequest> getCategories() {
-        List<CategoryRequest> category = categoriesService.getCategories();
-        return category;
+       return categoriesService.getCategories();
     }
 }

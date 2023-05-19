@@ -10,6 +10,7 @@ public class CategoryService {
     @Resource
     private CategoryRepository categoryRepository;
     public List<Category> getCategories() {
+
         return categoryRepository.findAll();
     }
 }

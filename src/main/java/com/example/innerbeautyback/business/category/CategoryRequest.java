@@ -16,7 +16,6 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CategoryRequest implements Serializable {
-    @Size(max = 50)
-    @NotNull
+    private Integer categoryId;
     private String categoryName;
 }

@@ -20,9 +20,8 @@ public class CategoriesService {
 
     public List<CategoryRequest> getCategories() {
         List<Category> categories = categoryService.getCategories();
-        List<CategoryRequest> dtos = categoryMapper.toDto();
+        return categoryMapper.toCategoryRequests(categories);
 
 
-        return null;
     }
 }

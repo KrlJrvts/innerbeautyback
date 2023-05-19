@@ -13,7 +13,7 @@ public class ProductController {
     @Resource
     private ProductService productService;
 
-    @GetMapping("/store")
+    @GetMapping("/store/products")
     @Operation(
             summary = "...",
             description = " Returns product info with ...")
