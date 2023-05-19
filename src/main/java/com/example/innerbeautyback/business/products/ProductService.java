@@ -1,7 +1,6 @@
 package com.example.innerbeautyback.business.products;
 
 import com.example.innerbeautyback.domain.product.ProductsService;
-import com.example.innerbeautyback.domain.product.category.CategoryMapper;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +13,7 @@ public class ProductService {
     private ProductsService productsService;
 
 
-    public List<ProductDto> getProducts() {
+    public List<ProductResponse> getProducts() {
 
 
         return null;

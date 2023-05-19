@@ -1,8 +1,6 @@
 package com.example.innerbeautyback.business.products;
 
 import com.example.innerbeautyback.domain.product.Product;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,7 +14,7 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductDto implements Serializable {
+public class ProductResponse implements Serializable {
     private Integer productAge;
     private String productDescription;
     private LocalDate productAvailableAt;
