@@ -48,9 +48,9 @@ public class ProductController {
                     """)
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK"),
-            @ApiResponse(responseCode = "403", description = "Wrong email or password", content = @Content(schema = @Schema(implementation = ApiError.class)))})
-    public ProductResponse login(@RequestParam String email, @RequestParam String password) {
-        return loginService.login(email, password);
-
+            @ApiResponse(responseCode = "403", description = "Requested Category not found", content = @Content(schema = @Schema(implementation = ApiError.class)))})
+    public List<ProductResponse> getProductsBy(@RequestParam Integer categoryId) {
+        List<ProductResponse> productResponse = productService.getProductsBy(categoryId);
+        return null;
     }
 }
