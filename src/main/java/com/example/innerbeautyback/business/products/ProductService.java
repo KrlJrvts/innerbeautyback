@@ -1,5 +1,7 @@
 package com.example.innerbeautyback.business.products;
 
+import com.example.innerbeautyback.domain.product.Product;
+import com.example.innerbeautyback.domain.product.ProductMapper;
 import com.example.innerbeautyback.domain.product.ProductsService;
 import com.example.innerbeautyback.domain.product.category.Category;
 import com.example.innerbeautyback.domain.product.category.CategoryService;
@@ -14,6 +16,8 @@ public class ProductService {
     @Resource
     private ProductsService productsService;
 
+    @Resource
+    private ProductMapper productMapper;
 
     public List<ProductResponse> getProducts() {
 
@@ -22,7 +26,8 @@ public class ProductService {
     }
 
     public List<ProductResponse> getProductsBy(Integer categoryId) {
-        productsService.getProductsBy(categoryId);
+        List<Product> products = productsService.getProductsBy(categoryId);
+        productMapper.toProductResponse(products);
 
         return null;
     }
