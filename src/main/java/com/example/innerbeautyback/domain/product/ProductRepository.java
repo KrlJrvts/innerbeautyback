@@ -7,7 +7,7 @@ import java.util.List;
 
 
 public interface ProductRepository extends JpaRepository<Product, Integer> {
-    @Query("select p from Product p where p.category.id = ?1 and p.status = ?2")
+    @Query("select p from Product p where (p.category.id = ?1 or ?1 = 0) and p.status = ?2")
     List<Product> findProductsBy(Integer id, String status);
 
 }
