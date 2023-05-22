@@ -42,14 +42,14 @@ public class ProductController {
 //        return product;
 //    }
     @GetMapping("/store/products")
-    @Operation(summary = "Returns products requested by categoryId",
+    @Operation(summary = "Returns products requested by categoryId,countryId and bloodgroupId, ",
             description = """
-                    """)
+                   When countryId and bloodgroupId is not chosen (0) then all products are listed """)
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK"),
             @ApiResponse(responseCode = "403", description = "Requested Category not found", content = @Content(schema = @Schema(implementation = ApiError.class)))})
-    public List<ProductResponse> getProductsBy(@RequestParam Integer categoryId) {
-        return productService.getProductsBy(categoryId);
+    public List<ProductResponse> getProductsBy(@RequestParam Integer categoryId, @RequestParam Integer countryId, @RequestParam Integer bloodgroupId ) {
+        return productService.getProductsBy(categoryId, countryId, bloodgroupId );
 
     }
 }
