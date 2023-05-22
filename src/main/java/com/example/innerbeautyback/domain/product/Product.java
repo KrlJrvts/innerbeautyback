@@ -3,7 +3,7 @@ package com.example.innerbeautyback.domain.product;
 import com.example.innerbeautyback.domain.image.Image;
 import com.example.innerbeautyback.domain.product.bloodgroup.BloodGroup;
 import com.example.innerbeautyback.domain.product.category.Category;
-import com.example.innerbeautyback.domain.product.country.Country;
+import com.example.innerbeautyback.domain.country.Country;
 import com.example.innerbeautyback.domain.product.gender.Gender;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;

@@ -3,7 +3,7 @@ package com.example.innerbeautyback.domain.product;
 import com.example.innerbeautyback.business.products.ProductResponse;
 import com.example.innerbeautyback.domain.product.bloodgroup.BloodGroup;
 import com.example.innerbeautyback.domain.product.category.Category;
-import com.example.innerbeautyback.domain.product.country.Country;
+import com.example.innerbeautyback.domain.country.Country;
 import com.example.innerbeautyback.domain.product.gender.Gender;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-05-19T15:00:57+0300",
-    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 18.0.2.1 (Oracle Corporation)"
+    date = "2023-05-19T15:25:39+0300",
+    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 19.0.2 (Amazon.com Inc.)"
 )
 @Component
 public class ProductMapperImpl implements ProductMapper {
