@@ -22,7 +22,7 @@ public class ProductService {
 //    }
 
     public List<ProductResponse> getProductsBy(Integer categoryId, Integer countryId, Integer bloodgroupId) {
-        List<Product> products = productsService.findProductsBy(categoryId,countryId, bloodgroupId);
+        List<Product> products = productsService.getProductsBy(categoryId,countryId, bloodgroupId);
         List<ProductResponse> productResponse = productMapper.toProductResponse(products);
 
         return productResponse;

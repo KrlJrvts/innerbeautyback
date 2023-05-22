@@ -13,7 +13,7 @@ public class ProductsService {
     @Resource
     private ProductRepository productRepository;
 
-    public List<Product> findProductsBy(Integer categoryId, Integer countryId, Integer bloodgroupId) {
+    public List<Product> getProductsBy(Integer categoryId, Integer countryId, Integer bloodgroupId) {
         return productRepository.findProductsBy(categoryId,countryId,bloodgroupId,Status.ACTIVE.getLetter());
     }
 }

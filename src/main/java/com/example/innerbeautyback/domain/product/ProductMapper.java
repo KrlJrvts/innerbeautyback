@@ -16,9 +16,9 @@ public interface ProductMapper {
     @Mapping(source = "price", target = "productPrice")
     @Mapping(source = "status", target = "productStatus")
     @Mapping(source = "category.name", target = "categoryName")
-    @Mapping(source = "country.name", target = "countryName")
     @Mapping(source = "gender.name", target = "genderName")
     @Mapping(source = "bloodgroup.type", target = "bloodgroupType")
+    @Mapping(source = "country.name",target = "countryName")
     @Mapping(source = "image", target = "imageData",qualifiedByName = "imageToImageData")
     ProductResponse toDto(Product product);
 
