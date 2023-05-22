@@ -1,4 +1,4 @@
-package com.example.innerbeautyback.domain.product.country;
+package com.example.innerbeautyback.domain.country;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
