@@ -1,6 +1,6 @@
 package com.example.innerbeautyback.domain.product.category;
 
-import com.example.innerbeautyback.business.category.CategoryRequest;
+import com.example.innerbeautyback.business.category.CategoryResponse;
 import org.mapstruct.*;
 
 import java.util.List;
@@ -10,8 +10,8 @@ public interface CategoryMapper {
 
     @Mapping(source = "id", target = "categoryId")
     @Mapping(source = "name", target = "categoryName")
-    CategoryRequest toCategoryRequest(Category category);
+    CategoryResponse toCategoryRequest(Category category);
 
-    List<CategoryRequest> toCategoryRequests(List<Category> categories);
+    List<CategoryResponse> toCategoryRequests(List<Category> categories);
 
 }

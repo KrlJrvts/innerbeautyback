@@ -18,7 +18,7 @@ public class CategoriesService {
     private CategoryMapper categoryMapper;
 
 
-    public List<CategoryRequest> getCategories() {
+    public List<CategoryResponse> getCategories() {
         List<Category> categories = categoryService.getCategories();
         return categoryMapper.toCategoryRequests(categories);
 

@@ -1,7 +1,7 @@
 package com.example.innerbeautyback.business.products;
 
 import com.example.innerbeautyback.business.category.CategoriesService;
-import com.example.innerbeautyback.business.category.CategoryRequest;
+import com.example.innerbeautyback.business.category.CategoryResponse;
 import com.example.innerbeautyback.infrastructure.error.ApiError;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -28,7 +28,7 @@ public class ProductController {
     @Operation(
             summary = "Returns all Product category names to storeView",
             description = " Returns product category names to storeView which shall be put under Product Category picture")
-    public List<CategoryRequest> getCategories() {
+    public List<CategoryResponse> getCategories() {
         return categoriesService.getCategories();
     }
 
