@@ -2,6 +2,9 @@ package com.example.innerbeautyback.business.products;
 
 import com.example.innerbeautyback.business.category.CategoriesService;
 import com.example.innerbeautyback.business.category.CategoryResponse;
+import com.example.innerbeautyback.business.products.Dtos.ProductRequest;
+import com.example.innerbeautyback.business.products.Dtos.ProductResponse;
+import com.example.innerbeautyback.business.products.Dtos.ProductsSearchRequest;
 import com.example.innerbeautyback.infrastructure.error.ApiError;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -22,7 +25,6 @@ public class ProductsController {
     private CategoriesService categoriesService;
 
 
-
     @GetMapping("/store")
     @Operation(
             summary = "Returns all Product category names to storeView",
@@ -32,29 +34,28 @@ public class ProductsController {
     }
 
 
-//    @GetMapping("/store/products")
-//    @Operation(
-//            summary = "...",
-//            description = " Returns product info with ...")
-//    public List<ProductDto> getProducts() {
-//        List<ProductDto> product = productService.getProducts();
-//        return product;
-//    }
     @PostMapping("/store/products")
     @Operation(summary = "Returns products requested by categoryId,countryId and bloodgroupId, ",
             description = """
-                   When countryId and bloodgroupId is not chosen (0) then all products are listed """)
+                    When countryId and bloodgroupId is not chosen (0) then all products are listed """)
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK"),
             @ApiResponse(responseCode = "403", description = "Requested Category not found", content = @Content(schema = @Schema(implementation = ApiError.class)))})
     public List<ProductResponse> getProductsBy(@RequestBody ProductsSearchRequest productsSearchRequest) {
-        return productsService.getProductsBy(productsSearchRequest );
+        return productsService.getProductsBy(productsSearchRequest);
 
     }
 
-    // get mapping for  add product
 
+    @PostMapping("/add-item")
+    @Operation(summary = "Add product to store",
+            description = """
+                    Product is added to database based on categoryId, countryId, bloodgroupId, genderId,
+                    Integer age, string productDate, string productDecription, integer productPrice and string productImage """)
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "OK")})
+    public void addProduct(@RequestBody ProductRequest productRequest) {
+        productsService.addProduct(productRequest);
 
-    // post mapping for add product
-
+    }
 }

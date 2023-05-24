@@ -2,7 +2,7 @@ package com.example.innerbeautyback.domain.product;
 
 
 import com.example.innerbeautyback.business.Status;
-import com.example.innerbeautyback.business.products.ProductsSearchRequest;
+import com.example.innerbeautyback.business.products.Dtos.ProductsSearchRequest;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
@@ -19,5 +19,9 @@ public class ProductService {
         Integer countryId = request.getCountryId();
         Integer bloodgroupId = request.getBloodgroupId();
         return productRepository.findProductsBy(categoryId, countryId, bloodgroupId, Status.ACTIVE.getLetter());
+    }
+
+    public void addProduct(Product product) {
+        productRepository.save(product);
     }
 }

@@ -1,13 +1,15 @@
 package com.example.innerbeautyback.domain.product;
 
-import com.example.innerbeautyback.business.products.ProductResponse;
+import com.example.innerbeautyback.business.Status;
+import com.example.innerbeautyback.business.products.Dtos.ProductRequest;
+import com.example.innerbeautyback.business.products.Dtos.ProductResponse;
 import com.example.innerbeautyback.domain.image.Image;
 import com.example.innerbeautyback.util.ImageUtil;
 import org.mapstruct.*;
 
 import java.util.List;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING, imports = {Status.class})
 public interface ProductMapper {
 
     @Mapping(source = "id", target = "productId")
@@ -20,6 +22,23 @@ public interface ProductMapper {
     @Mapping(source = "country.name",target = "countryName")
     @Mapping(source = "image", target = "imageData",qualifiedByName = "imageToImageData")
     ProductResponse toDto(Product product);
+
+    @Mapping(source ="productCategoryId", target = "category.id")
+    @Mapping(source ="productCountryId", target = "country.id")
+    @Mapping(source ="productBloodgroupId", target = "bloodgroup.id")
+    @Mapping(source ="productGenderId", target = "gender.id")
+    @Mapping(source ="productAge", target = "age")
+    @Mapping(source ="productDescription", target = "description")
+    @Mapping(source ="productAvailableAt", target = "availableAt")
+    @Mapping(source ="productPrice", target = "price")
+    //@Mapping(source ="productSellerId", target = "")
+    @Mapping(expression ="java(Status.ACTIVE.getLetter()", target = "status")
+    @Mapping(source ="productImage", target = "image", qualifiedByName = "imageDataToImage")
+
+    Product toAddProduct(ProductRequest productRequest);
+
+
+
 
     @Named("imageDataToImage")
     static Image imageDataToImage(String imageData) {
@@ -38,5 +57,6 @@ public interface ProductMapper {
     }
 
     List<ProductResponse> toProductResponse(List<Product> products);
+
 
 }
