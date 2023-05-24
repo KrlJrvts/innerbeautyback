@@ -3,7 +3,6 @@ package com.example.innerbeautyback.domain.product;
 import com.example.innerbeautyback.business.products.ProductResponse;
 import com.example.innerbeautyback.domain.country.Country;
 import com.example.innerbeautyback.domain.product.bloodgroup.BloodGroup;
-import com.example.innerbeautyback.domain.product.category.Category;
 import com.example.innerbeautyback.domain.product.gender.Gender;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +11,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-05-24T09:18:05+0300",
-    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 18.0.2.1 (Oracle Corporation)"
+    date = "2023-05-24T11:04:45+0300",
+    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 @Component
 public class ProductMapperImpl implements ProductMapper {
@@ -26,12 +25,11 @@ public class ProductMapperImpl implements ProductMapper {
 
         ProductResponse productResponse = new ProductResponse();
 
+        productResponse.setProductId( product.getId() );
         productResponse.setProductAge( product.getAge() );
         productResponse.setProductDescription( product.getDescription() );
         productResponse.setProductAvailableAt( product.getAvailableAt() );
         productResponse.setProductPrice( product.getPrice() );
-        productResponse.setProductStatus( product.getStatus() );
-        productResponse.setCategoryName( productCategoryName( product ) );
         productResponse.setGenderName( productGenderName( product ) );
         productResponse.setBloodgroupType( productBloodgroupType( product ) );
         productResponse.setCountryName( productCountryName( product ) );
@@ -52,21 +50,6 @@ public class ProductMapperImpl implements ProductMapper {
         }
 
         return list;
-    }
-
-    private String productCategoryName(Product product) {
-        if ( product == null ) {
-            return null;
-        }
-        Category category = product.getCategory();
-        if ( category == null ) {
-            return null;
-        }
-        String name = category.getName();
-        if ( name == null ) {
-            return null;
-        }
-        return name;
     }
 
     private String productGenderName(Product product) {

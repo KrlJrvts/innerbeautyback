@@ -10,12 +10,11 @@ import java.util.List;
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
 public interface ProductMapper {
 
+    @Mapping(source = "id", target = "productId")
     @Mapping(source = "age", target = "productAge")
     @Mapping(source = "description", target = "productDescription")
     @Mapping(source = "availableAt", target = "productAvailableAt")
     @Mapping(source = "price", target = "productPrice")
-    @Mapping(source = "status", target = "productStatus")
-    @Mapping(source = "category.name", target = "categoryName")
     @Mapping(source = "gender.name", target = "genderName")
     @Mapping(source = "bloodgroup.type", target = "bloodgroupType")
     @Mapping(source = "country.name",target = "countryName")

@@ -15,14 +15,14 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductResponse implements Serializable {
+    private Integer productId;
     private Integer productAge;
     private String productDescription;
     private LocalDate productAvailableAt;
     private Integer productPrice;
-    private String productStatus;
-    private String categoryName;
     private String countryName;
     private String genderName;
     private String bloodgroupType;
     private String imageData;
+    private Boolean isInFavourites;
 }
