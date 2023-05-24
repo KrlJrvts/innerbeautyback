@@ -21,6 +21,7 @@ public class ProductResponse implements Serializable {
     private LocalDate productAvailableAt;
     private Integer productPrice;
     private String countryName;
+    private Integer countryId;
     private String genderName;
     private String bloodgroupType;
     private String imageData;
