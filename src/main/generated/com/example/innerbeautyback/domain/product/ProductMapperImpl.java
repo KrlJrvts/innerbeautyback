@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-05-24T15:21:41+0300",
+    date = "2023-05-24T15:44:59+0300",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 18.0.2.1 (Oracle Corporation)"
 )
 @Component
@@ -32,6 +32,7 @@ public class ProductMapperImpl implements ProductMapper {
         productResponse.setProductPrice( product.getPrice() );
         productResponse.setGenderName( productGenderName( product ) );
         productResponse.setBloodgroupType( productBloodgroupType( product ) );
+        productResponse.setBloodgroupTypeId( productBloodgroupId( product ) );
         productResponse.setCountryName( productCountryName( product ) );
         productResponse.setCountryId( productCountryId( product ) );
         productResponse.setImageData( ProductMapper.imageToImageData( product.getImage() ) );
@@ -81,6 +82,21 @@ public class ProductMapperImpl implements ProductMapper {
             return null;
         }
         return type;
+    }
+
+    private Integer productBloodgroupId(Product product) {
+        if ( product == null ) {
+            return null;
+        }
+        BloodGroup bloodgroup = product.getBloodgroup();
+        if ( bloodgroup == null ) {
+            return null;
+        }
+        Integer id = bloodgroup.getId();
+        if ( id == null ) {
+            return null;
+        }
+        return id;
     }
 
     private String productCountryName(Product product) {
