@@ -13,7 +13,7 @@ public class CountriesController {
     @Resource
     private CountriesService countriesService;
 
-    @GetMapping("/store/product")
+    @GetMapping("/country/all")
     @Operation(
             summary = "Returns all countries (from database country table).",
             description = "Returns countryId and countryName.")
