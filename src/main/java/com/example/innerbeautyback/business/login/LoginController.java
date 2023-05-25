@@ -18,7 +18,7 @@ public class LoginController {
     @Resource
     private LoginService loginService;
 
-    @GetMapping("/login")
+    @GetMapping("/user/login")
     @Operation(summary = "Login. Returns userId and roleName",
             description = """
                     System searches for user with username and password, whose account is also active.

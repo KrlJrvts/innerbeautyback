@@ -25,7 +25,7 @@ public class ProductsController {
     private CategoriesService categoriesService;
 
 
-    @GetMapping("/store")
+    @GetMapping("/products/categories")
     @Operation(
             summary = "Returns all Product category names to storeView",
             description = " Returns product category names to storeView which shall be put under Product Category picture")
@@ -34,7 +34,7 @@ public class ProductsController {
     }
 
 
-    @PostMapping("/store/products")
+    @PostMapping("/products/category-all")
     @Operation(summary = "Returns products requested by categoryId,countryId and bloodgroupId, ",
             description = """
                     When countryId and bloodgroupId is not chosen (0) then all products are listed """)
@@ -47,7 +47,7 @@ public class ProductsController {
     }
 
 
-    @PostMapping("/add-item")
+    @PostMapping("/products/add")
     @Operation(summary = "Add product to store",
             description = """
                     Product is added to database based on categoryId, countryId, bloodgroupId, genderId,

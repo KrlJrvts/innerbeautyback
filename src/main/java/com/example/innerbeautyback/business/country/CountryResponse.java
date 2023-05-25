@@ -17,7 +17,5 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class CountryResponse implements Serializable {
     private Integer countryId;
-    @Size(max = 255)
-    @NotNull
     private String countryName;
 }

@@ -14,7 +14,7 @@ public class BloodGroupController {
     private BloodGroupsService bloodGroupsService;
 
 
-    @GetMapping("/bloodgroup/all")
+    @GetMapping("/products/bloodgroups")
     @Operation(
             summary = "Returns all bloodgroups (from database bloodgroup table).",
             description = "Returns bloodgroupTypeId and bloodGroupTypeName.")
