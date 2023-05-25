@@ -70,13 +70,13 @@ INSERT INTO public."user" (id, email, password, status, image_id, contact_id, ro
 INSERT INTO public."user" (id, email, password, status, image_id, contact_id, role_id) VALUES (DEFAULT, 'noproblems@hotmail.com', '123', 'A', null, 4, 1);
 -- user_product
 INSERT INTO public.user_product (id, product_id, seller_id, buyer_id) VALUES (DEFAULT, 1, 4, null);
-INSERT INTO public.user_product (id, product_id, seller_id, buyer_id) VALUES (DEFAULT, 4, 3, null);
-INSERT INTO public.user_product (id, product_id, seller_id, buyer_id) VALUES (DEFAULT, 3, 4, null);
-INSERT INTO public.user_product (id, product_id, seller_id, buyer_id) VALUES (DEFAULT, 2, 2, null);
 INSERT INTO public.user_product (id, product_id, seller_id, buyer_id) VALUES (DEFAULT, 2, 3, null);
+INSERT INTO public.user_product (id, product_id, seller_id, buyer_id) VALUES (DEFAULT, 3, 4, null);
 INSERT INTO public.user_product (id, product_id, seller_id, buyer_id) VALUES (DEFAULT, 4, 2, null);
-INSERT INTO public.user_product (id, product_id, seller_id, buyer_id) VALUES (DEFAULT, 4, 2, null);
-INSERT INTO public.user_product (id, product_id, seller_id, buyer_id) VALUES (DEFAULT, 3, 3, null);
+INSERT INTO public.user_product (id, product_id, seller_id, buyer_id) VALUES (DEFAULT, 5, 3, null);
+INSERT INTO public.user_product (id, product_id, seller_id, buyer_id) VALUES (DEFAULT, 6, 2, null);
+INSERT INTO public.user_product (id, product_id, seller_id, buyer_id) VALUES (DEFAULT, 7, 2, null);
+INSERT INTO public.user_product (id, product_id, seller_id, buyer_id) VALUES (DEFAULT, 8, 3, null);
 -- favourite
 INSERT INTO public.favorite (id, buyer_id, product_id) VALUES (DEFAULT, 2, 4);
 INSERT INTO public.favorite (id, buyer_id, product_id) VALUES (DEFAULT, 2, 2);
