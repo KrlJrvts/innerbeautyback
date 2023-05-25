@@ -1,6 +1,6 @@
 package com.example.innerbeautyback.business.products;
 
-import com.example.innerbeautyback.business.bloodgroup.BloodgroupService;
+import com.example.innerbeautyback.business.bloodgroup.BloodGroupsService;
 import com.example.innerbeautyback.business.gender.GenderService;
 import com.example.innerbeautyback.business.products.Dtos.ProductPostRequest;
 import com.example.innerbeautyback.business.products.Dtos.ProductResponse;
@@ -44,7 +44,7 @@ public class ProductsService {
     private CountryService countryService;
 
     @Resource
-    private BloodgroupService bloodgroupService;
+    private BloodGroupsService bloodGroupsService;
 
     @Resource
     private GenderService genderService;
@@ -72,7 +72,7 @@ public class ProductsService {
 
         product.setCategory(categoryService.findById(productPostRequest.getProductCategoryId()));
         product.setCountry(countryService.findById(productPostRequest.getProductCountryId()));
-        product.setBloodgroup(bloodgroupService.findById(productPostRequest.getProductBloodgroupId()));
+        product.setBloodgroup(bloodGroupsService.findById(productPostRequest.getProductBloodgroupId()));
         product.setGender(genderService.findById(productPostRequest.getProductGenderId()));
 
         User seller = userService.findById(productPostRequest.getProductSellerId());
