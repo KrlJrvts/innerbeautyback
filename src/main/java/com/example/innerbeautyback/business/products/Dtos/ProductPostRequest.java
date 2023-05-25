@@ -1,6 +1,5 @@
 package com.example.innerbeautyback.business.products.Dtos;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,7 +9,7 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductRequest {
+public class ProductPostRequest {
     private Integer productSellerId;
     private Integer productCategoryId;
     private Integer productCountryId;
@@ -21,5 +20,4 @@ public class ProductRequest {
     private LocalDate productAvailableAt;
     private Integer productPrice;
     private String productImage;
-
 }

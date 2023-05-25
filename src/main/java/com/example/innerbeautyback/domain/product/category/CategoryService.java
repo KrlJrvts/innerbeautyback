@@ -13,4 +13,8 @@ public class CategoryService {
 
         return categoryRepository.findAll();
     }
+
+    public Category findById(Integer productCategoryId) {
+        return categoryRepository.findById(productCategoryId).get();
+    }
 }

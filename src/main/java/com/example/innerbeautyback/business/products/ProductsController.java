@@ -2,7 +2,7 @@ package com.example.innerbeautyback.business.products;
 
 import com.example.innerbeautyback.business.category.CategoriesService;
 import com.example.innerbeautyback.business.category.CategoryResponse;
-import com.example.innerbeautyback.business.products.Dtos.ProductRequest;
+import com.example.innerbeautyback.business.products.Dtos.ProductPostRequest;
 import com.example.innerbeautyback.business.products.Dtos.ProductResponse;
 import com.example.innerbeautyback.business.products.Dtos.ProductsSearchRequest;
 import com.example.innerbeautyback.infrastructure.error.ApiError;
@@ -54,8 +54,8 @@ public class ProductsController {
                     Integer age, string productDate, string productDecription, integer productPrice and string productImage """)
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK")})
-    public void addProduct(@RequestBody ProductRequest productRequest) {
-        productsService.addProduct(productRequest);
+    public void addProduct(@RequestBody ProductPostRequest productPostRequest) {
+        productsService.addProduct(productPostRequest);
 
     }
 }

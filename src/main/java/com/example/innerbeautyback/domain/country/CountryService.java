@@ -13,4 +13,9 @@ public class CountryService {
     public List<Country> getCountries() {
        return countryRepository.findAll();
        }
+
+    public Country findById(Integer productCountryId) {
+        return countryRepository.findById(productCountryId).get();
+    }
+    
 }

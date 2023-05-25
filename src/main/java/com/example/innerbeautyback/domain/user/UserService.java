@@ -28,4 +28,8 @@ public class UserService {
     public void addUser(User user) {
         userRepository.save(user);
     }
+
+    public User findById(Integer userId) {
+        return userRepository.findById(userId).get();
+    }
 }
