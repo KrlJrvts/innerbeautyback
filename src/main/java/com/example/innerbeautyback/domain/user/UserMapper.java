@@ -25,7 +25,7 @@ public interface UserMapper {
 
     @Mapping(source = "userPassword", target = "password")
     @Mapping(ignore = true, target = "image")
-    User toEditUser(UserEditRequest userEditRequest, @MappingTarget User user);
+    void toEditUser(UserEditRequest userEditRequest, @MappingTarget User user);
 
 
     @Named("imageDataToImage")
