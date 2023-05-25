@@ -30,7 +30,7 @@ public class UsersController {
                User enters password, password confirmaltion and/or new image. And will update named fields in database.
             """)
     @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "User edit completed successfully!"), @ApiResponse(responseCode = "403", description = "Profile edit failed!")})
-    public void editUser(@RequestParam Integer userId, @RequestBody UserRequestExtended userRequestExtended) {
-        usersService.editUser(userId, userRequestExtended);
+    public void editUser(@RequestParam Integer userId, @RequestBody UserEditRequest userEditRequest) {
+        usersService.editUser(userId, userEditRequest);
     }
 }

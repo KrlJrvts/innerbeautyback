@@ -12,8 +12,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserRequestExtended implements Serializable {
-    private Integer userId;
+public class UserEditRequest implements Serializable {
     private String userPassword;
     private String userImage;
 }

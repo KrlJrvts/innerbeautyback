@@ -3,7 +3,7 @@ package com.example.innerbeautyback.domain.user;
 import com.example.innerbeautyback.business.Status;
 import com.example.innerbeautyback.business.login.LoginResponse;
 import com.example.innerbeautyback.business.users.UserRequest;
-import com.example.innerbeautyback.business.users.UserRequestExtended;
+import com.example.innerbeautyback.business.users.UserEditRequest;
 import com.example.innerbeautyback.domain.user.role.Role;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
@@ -48,13 +48,13 @@ public class UserMapperImpl implements UserMapper {
     }
 
     @Override
-    public User toEditUser(UserRequestExtended userRequestExtended, User user) {
-        if ( userRequestExtended == null ) {
+    public User toEditUser(UserEditRequest userEditRequest, User user) {
+        if ( userEditRequest == null ) {
             return user;
         }
 
-        user.setId( userRequestExtended.getUserId() );
-        user.setPassword( userRequestExtended.getUserPassword() );
+        user.setId( userEditRequest.getUserId() );
+        user.setPassword( userEditRequest.getUserPassword() );
 
         return user;
     }

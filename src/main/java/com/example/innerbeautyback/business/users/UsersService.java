@@ -52,10 +52,10 @@ public class UsersService {
     }
 
     @Transactional
-    public void editUser(Integer userId, UserRequestExtended userRequestExtended) {
+    public void editUser(Integer userId, UserEditRequest userEditRequest) {
         User user = userService.getUserBy(userId);
-        userMapper.toEditUser(userRequestExtended, user);
-        handleImageChange(user, userRequestExtended.getUserImage());
+        userMapper.toEditUser(userEditRequest, user);
+        handleImageChange(user, userEditRequest.getUserImage());
         userService.addUser(user);
     }
 
