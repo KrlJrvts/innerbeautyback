@@ -21,9 +21,6 @@ public class UsersService {
     private UserService userService;
 
     @Resource
-    private UserMapper userMapper;
-
-    @Resource
     private ImageService imageService;
 
     @Resource
@@ -31,6 +28,9 @@ public class UsersService {
 
     @Resource
     private ContactService contactService;
+
+    @Resource
+    private UserMapper userMapper;
 
     @Transactional
     public void addUser(UserRequest userRequest) {
@@ -51,9 +51,39 @@ public class UsersService {
         userService.addUser(user);
     }
 
+    @Transactional
+    public void editUser(Integer userId, UserRequestExtended userRequestExtended) {
+        User user = userService.getUserBy(userId);
+        userMapper.toEditUser(userRequestExtended, user);
+        handleImageChange(user, userRequestExtended.getUserImage());
+        userService.addUser(user);
+    }
+
     public void addImageIfPresent(Image image) {
         if (ImageUtil.imageIsPresent(image)) {
             imageService.addImage(image);
         }
     }
+
+    private void handleImageChange(User user, String imageDataFromUpdate) {
+        Image currentImage = user.getImage();
+        if (currentImageUpdateIsRequired(currentImage, imageDataFromUpdate)) {
+            currentImage.setData(ImageUtil.base64ImageDataToByteArray(imageDataFromUpdate));
+        }
+        if (newImageIsRequired(imageDataFromUpdate, currentImage)) {
+            Image newImage = new Image(ImageUtil.base64ImageDataToByteArray(imageDataFromUpdate));
+            user.setImage(newImage);
+        }
+
+    }
+
+    private static boolean currentImageUpdateIsRequired(Image currentImage, String imageDataFromUpdate) {
+        return ImageUtil.imageIsPresent(currentImage)
+                && !imageDataFromUpdate.equals(ImageUtil.byteArrayToBase64ImageData(currentImage.getData()));
+    }
+
+    private static boolean newImageIsRequired(String imageDataFromUpdate, Image currentImage) {
+        return currentImage == null && !imageDataFromUpdate.isEmpty();
+    }
+
 }

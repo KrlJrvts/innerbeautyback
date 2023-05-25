@@ -5,9 +5,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.annotation.Resource;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UsersController {
@@ -15,6 +13,7 @@ public class UsersController {
 
     @Resource
     private UsersService usersService;
+
 
 
     @PostMapping("/user/register")
@@ -30,4 +29,14 @@ public class UsersController {
     }
 
 
+    @PutMapping("/user/edit")
+    @Operation(summary = "Edit user by password, image",
+            description = """
+                    User enters password, password confirmaltion and/or new image. And will update named fields in database.""")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "User edit completed successfully!"),
+            @ApiResponse(responseCode = "403", description = "Profile edit failed!")})
+    public void editUser(@RequestParam Integer userId, @RequestBody UserRequestExtended userRequestExtended) {
+        usersService.editUser(userId,userRequestExtended);
+    }
 }

@@ -3,6 +3,7 @@ package com.example.innerbeautyback.domain.user;
 import com.example.innerbeautyback.business.Status;
 import com.example.innerbeautyback.business.login.LoginResponse;
 import com.example.innerbeautyback.business.users.UserRequest;
+import com.example.innerbeautyback.business.users.UserRequestExtended;
 import com.example.innerbeautyback.domain.image.Image;
 import com.example.innerbeautyback.util.ImageUtil;
 import org.mapstruct.*;
@@ -20,6 +21,11 @@ public interface UserMapper {
     @Mapping(expression = "java(Status.ACTIVE.getLetter())", target = "status")
     @Mapping(source = "userImage", target = "image", qualifiedByName = "imageDataToImage")
     User toRegisterUser(UserRequest userRequest);
+
+    @Mapping(source = "userId", target = "id")
+    @Mapping(source = "userPassword", target = "password")
+    @Mapping(ignore = true, target = "image")
+    User toEditUser(UserRequestExtended userRequestExtended, @MappingTarget User user);
 
 
     @Named("imageDataToImage")
