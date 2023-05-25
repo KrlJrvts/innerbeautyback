@@ -88,10 +88,6 @@ public class ProductsService {
 
     }
 
-    @PatchMapping("/products/favorite")
-    public void addFavorite(Integer userId, Integer productId) {
-        favoriteService.addFavorite(userId, productId);
-    }
 
     public void addImageIfPresent(Image image) {
         if (ImageUtil.imageIsPresent(image)) {
