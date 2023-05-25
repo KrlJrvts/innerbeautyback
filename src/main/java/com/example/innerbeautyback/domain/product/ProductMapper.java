@@ -20,6 +20,7 @@ public interface ProductMapper {
     @Mapping(source = "gender.name", target = "genderName")
     @Mapping(source = "bloodgroup.type", target = "bloodgroupType")
     @Mapping(source = "country.name",target = "countryName")
+    @Mapping(source = "country.id",target = "countryId")
     @Mapping(source = "image", target = "imageData",qualifiedByName = "imageToImageData")
     ProductResponse toDto(Product product);
 
