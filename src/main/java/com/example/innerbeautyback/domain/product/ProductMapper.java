@@ -36,8 +36,6 @@ public interface ProductMapper {
     Product toAddProduct(ProductPostRequest productPostRequest);
 
 
-
-
     @Named("imageDataToImage")
     static Image imageDataToImage(String imageData) {
         if (imageData.isEmpty()) {

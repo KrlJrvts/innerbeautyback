@@ -12,10 +12,11 @@ import com.example.innerbeautyback.domain.product.Product;
 import com.example.innerbeautyback.domain.product.ProductMapper;
 import com.example.innerbeautyback.domain.product.ProductService;
 import com.example.innerbeautyback.domain.product.category.CategoryService;
-import com.example.innerbeautyback.domain.user.User;
 import com.example.innerbeautyback.domain.user.UserService;
 import com.example.innerbeautyback.domain.user.favorite.FavoriteService;
 import com.example.innerbeautyback.domain.user.userproduct.UserProduct;
+import com.example.innerbeautyback.domain.user.userproduct.UserProductRepository;
+import com.example.innerbeautyback.domain.user.userproduct.UserProductService;
 import com.example.innerbeautyback.util.ImageUtil;
 import jakarta.annotation.Resource;
 import lombok.Setter;
@@ -55,6 +56,10 @@ public class ProductsService {
     @Resource
     private UserService userService;
 
+    @Resource
+    private UserProductService userProductService;
+
+
 
     public List<ProductResponse> getProductsBy(ProductsSearchRequest request) {
         List<Product> products = productService.getProducts(request);
@@ -78,20 +83,26 @@ public class ProductsService {
         addImageIfPresent(product.getImage());
         productService.addProduct(product);
 
-//        User seller = userService.findById(productPostRequest.getProductSellerId());
-//        UserProduct userProduct = new UserProduct(seller.getId(), product.getId());
-//        userProduct.setProduct(product);
-//        userProduct.setUser(seller);
-//
-//        product.setUserProduct(userProduct);
+        UserProduct userProduct = new UserProduct();
+        userProduct.setProduct(product);
+        userProduct.setSeller(userService.getUserBy(productPostRequest.getProductSellerId()));
+        userProductService.addUserProduct(userProduct);
 
 
     }
 
+    public void addProductToCart(Integer productId, Integer buyerId) {
+        UserProduct userProduct = userProductService.getProductBy(productId);
+        userProduct.setBuyer(userService.getUserBy(buyerId));
+        userProductService.addUserProduct(userProduct);
+
+    }
 
     public void addImageIfPresent(Image image) {
         if (ImageUtil.imageIsPresent(image)) {
             imageService.addImage(image);
         }
     }
+
+
 }

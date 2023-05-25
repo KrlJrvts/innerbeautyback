@@ -58,4 +58,20 @@ public class ProductsController {
         productsService.addProduct(productPostRequest);
 
     }
+
+
+    // create patch function here
+
+    @PatchMapping("/products/cart")
+    @Operation(summary = "Add product to cart",
+            description = """
+                    Product is added to cart based on productId, buyerId""")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Product added to a cart"),
+            @ApiResponse(responseCode = "403", description = "Requested Product not found", content = @Content(schema = @Schema(implementation = ApiError.class)))})
+    public void addProductToCart(@RequestParam Integer buyerId, @RequestParam Integer productId) {
+        productsService.addProductToCart(buyerId, productId);
+    }
+
+
 }
