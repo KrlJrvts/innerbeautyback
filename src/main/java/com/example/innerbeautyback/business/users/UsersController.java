@@ -17,7 +17,7 @@ public class UsersController {
     private UsersService usersService;
 
 
-    @PostMapping("/register")
+    @PostMapping("/user/register")
     @Operation(summary = "Register new user by email, password, firstName, lastName",
             description = """
                     User enters email, password, firstName, lastName. And will get automatically userId, roleName,

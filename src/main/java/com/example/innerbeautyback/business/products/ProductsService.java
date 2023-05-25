@@ -75,15 +75,17 @@ public class ProductsService {
         product.setBloodgroup(bloodGroupsService.findById(productPostRequest.getProductBloodgroupId()));
         product.setGender(genderService.findById(productPostRequest.getProductGenderId()));
 
-        User seller = userService.findById(productPostRequest.getProductSellerId());
-        UserProduct userProduct = new UserProduct(seller.getId(), product.getId());
-        userProduct.setProduct(product);
-        userProduct.setUser(seller);
-
-        product.setUserProduct(userProduct);
-
         addImageIfPresent(product.getImage());
         productService.addProduct(product);
+
+//        User seller = userService.findById(productPostRequest.getProductSellerId());
+//        UserProduct userProduct = new UserProduct(seller.getId(), product.getId());
+//        userProduct.setProduct(product);
+//        userProduct.setUser(seller);
+//
+//        product.setUserProduct(userProduct);
+
+
     }
 
     public void addImageIfPresent(Image image) {

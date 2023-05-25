@@ -1,6 +1,8 @@
 package com.example.innerbeautyback.domain.product;
 
-import com.example.innerbeautyback.business.products.ProductResponse;
+import com.example.innerbeautyback.business.Status;
+import com.example.innerbeautyback.business.products.Dtos.ProductPostRequest;
+import com.example.innerbeautyback.business.products.Dtos.ProductResponse;
 import com.example.innerbeautyback.domain.country.Country;
 import com.example.innerbeautyback.domain.product.bloodgroup.BloodGroup;
 import com.example.innerbeautyback.domain.product.gender.Gender;
@@ -11,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-05-24T11:04:45+0300",
+    date = "2023-05-25T09:45:58+0300",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 @Component
@@ -32,10 +34,31 @@ public class ProductMapperImpl implements ProductMapper {
         productResponse.setProductPrice( product.getPrice() );
         productResponse.setGenderName( productGenderName( product ) );
         productResponse.setBloodgroupType( productBloodgroupType( product ) );
+        productResponse.setBloodgroupTypeId( productBloodgroupId( product ) );
         productResponse.setCountryName( productCountryName( product ) );
+        productResponse.setCountryId( productCountryId( product ) );
         productResponse.setImageData( ProductMapper.imageToImageData( product.getImage() ) );
 
         return productResponse;
+    }
+
+    @Override
+    public Product toAddProduct(ProductPostRequest productPostRequest) {
+        if ( productPostRequest == null ) {
+            return null;
+        }
+
+        Product product = new Product();
+
+        product.setAge( productPostRequest.getProductAge() );
+        product.setDescription( productPostRequest.getProductDescription() );
+        product.setAvailableAt( productPostRequest.getProductAvailableAt() );
+        product.setPrice( productPostRequest.getProductPrice() );
+        product.setImage( ProductMapper.imageDataToImage( productPostRequest.getProductImage() ) );
+
+        product.setStatus( Status.ACTIVE.getLetter() );
+
+        return product;
     }
 
     @Override
@@ -82,6 +105,21 @@ public class ProductMapperImpl implements ProductMapper {
         return type;
     }
 
+    private Integer productBloodgroupId(Product product) {
+        if ( product == null ) {
+            return null;
+        }
+        BloodGroup bloodgroup = product.getBloodgroup();
+        if ( bloodgroup == null ) {
+            return null;
+        }
+        Integer id = bloodgroup.getId();
+        if ( id == null ) {
+            return null;
+        }
+        return id;
+    }
+
     private String productCountryName(Product product) {
         if ( product == null ) {
             return null;
@@ -95,5 +133,20 @@ public class ProductMapperImpl implements ProductMapper {
             return null;
         }
         return name;
+    }
+
+    private Integer productCountryId(Product product) {
+        if ( product == null ) {
+            return null;
+        }
+        Country country = product.getCountry();
+        if ( country == null ) {
+            return null;
+        }
+        Integer id = country.getId();
+        if ( id == null ) {
+            return null;
+        }
+        return id;
     }
 }
