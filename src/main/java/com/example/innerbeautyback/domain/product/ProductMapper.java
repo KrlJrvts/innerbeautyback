@@ -1,9 +1,11 @@
 package com.example.innerbeautyback.domain.product;
 
 import com.example.innerbeautyback.business.Status;
+import com.example.innerbeautyback.business.products.Dtos.ProductCartResponse;
 import com.example.innerbeautyback.business.products.Dtos.ProductResponse;
 import com.example.innerbeautyback.business.products.Dtos.ProductPostRequest;
 import com.example.innerbeautyback.domain.image.Image;
+import com.example.innerbeautyback.domain.user.userproduct.UserProduct;
 import com.example.innerbeautyback.util.ImageUtil;
 import org.mapstruct.*;
 
@@ -36,6 +38,10 @@ public interface ProductMapper {
     Product toAddProduct(ProductPostRequest productPostRequest);
 
 
+    ProductCartResponse toProductCartResponse(Product product);
+    List <ProductResponse> toProductResponse(List<Product> products);
+
+
     @Named("imageDataToImage")
     static Image imageDataToImage(String imageData) {
         if (imageData.isEmpty()) {
@@ -51,8 +57,6 @@ public interface ProductMapper {
         }
         return ImageUtil.byteArrayToBase64ImageData(image.getData());
     }
-
-    List<ProductResponse> toProductResponse(List<Product> products);
 
 
 }

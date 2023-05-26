@@ -1,6 +1,7 @@
 package com.example.innerbeautyback.domain.product;
 
 import com.example.innerbeautyback.business.Status;
+import com.example.innerbeautyback.business.products.Dtos.ProductCartResponse;
 import com.example.innerbeautyback.business.products.Dtos.ProductPostRequest;
 import com.example.innerbeautyback.business.products.Dtos.ProductResponse;
 import com.example.innerbeautyback.domain.country.Country;
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-05-25T15:32:41+0300",
+    date = "2023-05-26T10:37:19+0300",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 @Component
@@ -59,6 +60,17 @@ public class ProductMapperImpl implements ProductMapper {
         product.setStatus( Status.ACTIVE.getLetter() );
 
         return product;
+    }
+
+    @Override
+    public ProductCartResponse toProductCartResponse(Product product) {
+        if ( product == null ) {
+            return null;
+        }
+
+        ProductCartResponse productCartResponse = new ProductCartResponse();
+
+        return productCartResponse;
     }
 
     @Override

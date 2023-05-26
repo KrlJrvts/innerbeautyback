@@ -2,6 +2,7 @@ package com.example.innerbeautyback.business.products;
 
 import com.example.innerbeautyback.business.category.CategoriesService;
 import com.example.innerbeautyback.business.category.CategoryResponse;
+import com.example.innerbeautyback.business.products.Dtos.ProductCartResponse;
 import com.example.innerbeautyback.business.products.Dtos.ProductPostRequest;
 import com.example.innerbeautyback.business.products.Dtos.ProductResponse;
 import com.example.innerbeautyback.business.products.Dtos.ProductsSearchRequest;
@@ -62,7 +63,7 @@ public class ProductsController {
 
     // create patch function here
 
-    @PatchMapping("/products/cart")
+    @PatchMapping("/products/cart-add")
     @Operation(summary = "Add product to cart",
             description = """
                     Product is added to cart based on productId, buyerId""")
@@ -73,5 +74,17 @@ public class ProductsController {
         productsService.addProductToCart(buyerId, productId);
     }
 
+    @GetMapping("/products/cart")
+    @Operation(summary = "Returns products in cart",
+            description = """
+                    Products in cart are returned based on buyerId and there will be displayed categoryName, countryName, bloodgroupName, 
+                     genderName, age, productDate, productDescription, productPrice, productImage,""")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "You have products in cart"),
+            @ApiResponse(responseCode = "403", description = "No products in cart")})
+    public List<ProductCartResponse> findAllProductsInCart(@RequestParam Integer buyerId) {
+        List <ProductCartResponse> cartItems = productsService.getAllProductsInCart(buyerId);
+        return cartItems;
+    }
 
 }

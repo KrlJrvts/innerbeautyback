@@ -2,6 +2,7 @@ package com.example.innerbeautyback.business.products;
 
 import com.example.innerbeautyback.business.bloodgroup.BloodGroupsService;
 import com.example.innerbeautyback.business.gender.GenderService;
+import com.example.innerbeautyback.business.products.Dtos.ProductCartResponse;
 import com.example.innerbeautyback.business.products.Dtos.ProductPostRequest;
 import com.example.innerbeautyback.business.products.Dtos.ProductResponse;
 import com.example.innerbeautyback.business.products.Dtos.ProductsSearchRequest;
@@ -15,7 +16,7 @@ import com.example.innerbeautyback.domain.product.category.CategoryService;
 import com.example.innerbeautyback.domain.user.UserService;
 import com.example.innerbeautyback.domain.user.favorite.FavoriteService;
 import com.example.innerbeautyback.domain.user.userproduct.UserProduct;
-import com.example.innerbeautyback.domain.user.userproduct.UserProductRepository;
+import com.example.innerbeautyback.domain.user.userproduct.UserProductMapper;
 import com.example.innerbeautyback.domain.user.userproduct.UserProductService;
 import com.example.innerbeautyback.util.ImageUtil;
 import jakarta.annotation.Resource;
@@ -52,6 +53,9 @@ public class ProductsService {
 
     @Resource
     private ProductMapper productMapper;
+
+    @Resource
+    private UserProductMapper userProductMapper;
 
     @Resource
     private UserService userService;
@@ -105,4 +109,9 @@ public class ProductsService {
     }
 
 
+    public List<ProductCartResponse> getAllProductsInCart(Integer buyerId) {
+        List <UserProduct> userProducts = userProductService.getAllProductsInCart(buyerId);
+        List<ProductCartResponse> productCartResponses = userProductMapper.toProductCartResponses(userProducts);
+        return productCartResponses;
+    }
 }

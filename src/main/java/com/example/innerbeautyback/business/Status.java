@@ -7,7 +7,9 @@ import lombok.Getter;
 public enum Status {
 
     ACTIVE("A"),
-    DELETED("D");
+    DELETED("D"),
+    CART("C");
+
 
     private final String letter;
 
