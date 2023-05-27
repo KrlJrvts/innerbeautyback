@@ -14,6 +14,7 @@ import java.util.List;
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING, imports = {Status.class})
 public interface ProductMapper {
 
+    @Mapping(source ="category.name", target = "categoryName")
     @Mapping(source = "id", target = "productId")
     @Mapping(source = "age", target = "productAge")
     @Mapping(source = "description", target = "productDescription")
