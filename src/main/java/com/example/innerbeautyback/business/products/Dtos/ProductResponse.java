@@ -15,6 +15,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductResponse implements Serializable {
+    private String categoryName;
     private Integer productId;
     private Integer productAge;
     private String productDescription;
