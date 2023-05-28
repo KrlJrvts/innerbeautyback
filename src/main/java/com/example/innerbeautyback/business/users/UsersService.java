@@ -56,6 +56,7 @@ public class UsersService {
         User user = userService.getUserBy(userId);
         userMapper.toEditUser(userEditRequest, user);
         handleImageChange(user, userEditRequest.getUserImage());
+        addImageIfPresent(user.getImage());
         userService.addUser(user);
     }
 

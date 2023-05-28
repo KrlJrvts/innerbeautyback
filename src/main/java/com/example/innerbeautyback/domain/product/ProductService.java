@@ -29,6 +29,7 @@ public class ProductService {
     }
 
     public void addProduct(Product product) {
+        product.setStatus(Status.CART.getLetter());
         productRepository.save(product);
     }
 

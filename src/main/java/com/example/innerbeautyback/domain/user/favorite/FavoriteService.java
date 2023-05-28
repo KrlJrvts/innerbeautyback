@@ -1,5 +1,6 @@
 package com.example.innerbeautyback.domain.user.favorite;
 
+import com.example.innerbeautyback.domain.user.userproduct.UserProduct;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 

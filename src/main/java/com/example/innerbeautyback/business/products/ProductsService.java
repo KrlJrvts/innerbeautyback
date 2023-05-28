@@ -1,5 +1,6 @@
 package com.example.innerbeautyback.business.products;
 
+import com.example.innerbeautyback.business.Status;
 import com.example.innerbeautyback.business.bloodgroup.BloodGroupsService;
 import com.example.innerbeautyback.business.gender.GenderService;
 import com.example.innerbeautyback.business.products.Dtos.ProductCartResponse;
@@ -11,9 +12,11 @@ import com.example.innerbeautyback.domain.image.Image;
 import com.example.innerbeautyback.domain.image.ImageService;
 import com.example.innerbeautyback.domain.product.Product;
 import com.example.innerbeautyback.domain.product.ProductMapper;
+import com.example.innerbeautyback.domain.product.ProductRepository;
 import com.example.innerbeautyback.domain.product.ProductService;
 import com.example.innerbeautyback.domain.product.category.CategoryService;
 import com.example.innerbeautyback.domain.user.UserService;
+import com.example.innerbeautyback.domain.user.favorite.Favorite;
 import com.example.innerbeautyback.domain.user.favorite.FavoriteService;
 import com.example.innerbeautyback.domain.user.userproduct.UserProduct;
 import com.example.innerbeautyback.domain.user.userproduct.UserProductMapper;
@@ -24,6 +27,7 @@ import lombok.Setter;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -114,4 +118,25 @@ public class ProductsService {
         List<ProductCartResponse> productCartResponses = userProductMapper.toProductCartResponses(userProducts);
         return productCartResponses;
     }
+
+    public void deleteProductFromCart(Integer buyerId) {
+        userProductService.deactivateProductFromCart(buyerId);
+    }
+
+    public void removeProductFromCart(Integer buyerId, Integer productId) {
+        userProductService.removeProductFromCart(buyerId, productId);
+    }
+
+
+
+    public void addImageIfPresent(Image image) {
+        if (ImageUtil.imageIsPresent(image)) {
+            imageService.addImage(image);
+        }
+    }
+
+
+
+
+
 }
