@@ -129,13 +129,6 @@ public class ProductsService {
 
 
 
-    public void addImageIfPresent(Image image) {
-        if (ImageUtil.imageIsPresent(image)) {
-            imageService.addImage(image);
-        }
-    }
-
-
 
 
 
