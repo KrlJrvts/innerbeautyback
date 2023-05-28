@@ -95,7 +95,7 @@ public class ProductsService {
 
     }
 
-    public void addProductToCart(Integer productId, Integer buyerId) {
+    public void addProductToCart(Integer buyerId, Integer productId) {
         UserProduct userProduct = userProductService.getProductBy(productId);
         userProduct.setBuyer(userService.getUserBy(buyerId));
         userProductService.addUserProduct(userProduct);
