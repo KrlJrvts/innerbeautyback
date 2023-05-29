@@ -38,12 +38,10 @@ public class UsersService {
 
         User user = userMapper.toRegisterUser(userRequest);
 
-        // Create and associate (SAVE) a Contact entity
         Contact contact = new Contact(userRequest.getContactFirstname(), userRequest.getContactLastname());
         contactService.addContact(contact);
         user.setContact(contact);
 
-        // Find associated role entity
         Role role = roleService.findRoleUser();
         user.setRole(role);
 

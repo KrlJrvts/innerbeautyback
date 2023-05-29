@@ -116,12 +116,13 @@ public class ProductsController {
     @GetMapping("/products/favorite-add")
     @Operation(summary = "Add product to favorite",
             description = """
-                    Product is added to favorite based on productId and buyerId""")
+                    Product is added to favorite based on productId and buyerId.
+                    When product is already in user favorite list error 211 is returned""")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Product added to favorite"),
             @ApiResponse(responseCode = "403", description = "Requested Product not found")})
     public void addProductToFavorite(@RequestParam Integer buyerId, @RequestParam Integer productId) {
-        productsService.addProductToFavorite(productId, buyerId);
+        productsService.addProductToFavorite(buyerId, productId);
     }
 
 

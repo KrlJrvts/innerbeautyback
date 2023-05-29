@@ -12,9 +12,9 @@ import com.example.innerbeautyback.domain.image.Image;
 import com.example.innerbeautyback.domain.image.ImageService;
 import com.example.innerbeautyback.domain.product.Product;
 import com.example.innerbeautyback.domain.product.ProductMapper;
-import com.example.innerbeautyback.domain.product.ProductRepository;
 import com.example.innerbeautyback.domain.product.ProductService;
 import com.example.innerbeautyback.domain.product.category.CategoryService;
+import com.example.innerbeautyback.domain.user.User;
 import com.example.innerbeautyback.domain.user.UserService;
 import com.example.innerbeautyback.domain.user.favorite.Favorite;
 import com.example.innerbeautyback.domain.user.favorite.FavoriteService;
@@ -24,11 +24,9 @@ import com.example.innerbeautyback.domain.user.userproduct.UserProductService;
 import com.example.innerbeautyback.util.ImageUtil;
 import jakarta.annotation.Resource;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -130,11 +128,16 @@ public class ProductsService {
         userProductService.removeProductFromCart(buyerId, productId);
     }
 
-    public void addProductToFavorite(Integer productId, Integer buyerId) {
-        Favorite favorite = favoriteService.getProductBy(productId);
+    public void addProductToFavorite(Integer buyerId, Integer productId) {
+        favoriteService.validateFavoriteBy(buyerId, productId);
+        Product product = productService.findActiveProductBy(productId);
+        User buyer = userService.getUserBy(buyerId);
+
+
+        Favorite favorite = new Favorite();
+        favorite.setProduct(productService.findActiveProductBy(productId));
         favorite.setBuyer(userService.getUserBy(buyerId));
         favoriteService.addFavorite(favorite);
-
-
     }
+
 }

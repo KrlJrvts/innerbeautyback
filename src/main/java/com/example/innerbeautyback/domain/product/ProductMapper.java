@@ -33,7 +33,6 @@ public interface ProductMapper {
     @Mapping(source ="productDescription", target = "description")
     @Mapping(source ="productAvailableAt", target = "availableAt")
     @Mapping(source ="productPrice", target = "price")
-//    @Mapping(target ="productSellerId", ignore = true)
     @Mapping(expression ="java(Status.ACTIVE.getLetter())", target = "status")
     @Mapping(source ="productImage", target = "image", qualifiedByName = "imageDataToImage")
     Product toAddProduct(ProductPostRequest productPostRequest);

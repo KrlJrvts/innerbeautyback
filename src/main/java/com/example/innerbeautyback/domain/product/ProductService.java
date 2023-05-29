@@ -17,7 +17,7 @@ public class ProductService {
         Integer categoryId = request.getCategoryId();
         Integer countryId = request.getCountryId();
         Integer bloodgroupId = request.getBloodgroupId();
-        return productRepository.findProductsBy(categoryId, countryId, bloodgroupId, Status.ACTIVE.getLetter());
+        return productRepository.findActiveAndInCartProductsBy(categoryId, countryId, bloodgroupId);
     }
 
     public void addProduct(Product product) {

@@ -19,7 +19,9 @@ public class UsersController {
     @Operation(summary = "Register new user by email, password, firstName, lastName", description = """
             User enters email, password, firstName, lastName. And will get automatically userId, roleName,
             status. System also checks if email is already in use. If it is, error with errorCode 112 is thrown""")
-    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "User registration completed successfully!"), @ApiResponse(responseCode = "403", description = "Email already in use")})
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "User registration completed successfully!"),
+            @ApiResponse(responseCode = "403", description = "Email already in use")})
     public void addUser(@RequestBody UserRequest userRequest) {
         usersService.addUser(userRequest);
     }

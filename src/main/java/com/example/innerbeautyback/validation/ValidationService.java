@@ -17,4 +17,10 @@ public class ValidationService {
             throw  new BusinessException(Error.USER_UNAVAILABLE.getMessage(), Error.USER_UNAVAILABLE.getErrorCode());
         }
     }
+
+    public static void validateProductInFavorites(boolean productInFavorites) {
+        if (productInFavorites) {
+            throw new BusinessException(Error.PRODUCT_IN_FAVORITES.getMessage(), Error.PRODUCT_IN_FAVORITES.getErrorCode());
+        }
+    }
 }
