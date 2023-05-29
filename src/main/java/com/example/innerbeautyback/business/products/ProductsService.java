@@ -3,10 +3,7 @@ package com.example.innerbeautyback.business.products;
 import com.example.innerbeautyback.business.Status;
 import com.example.innerbeautyback.business.bloodgroup.BloodGroupsService;
 import com.example.innerbeautyback.business.gender.GenderService;
-import com.example.innerbeautyback.business.products.Dtos.ProductCartResponse;
-import com.example.innerbeautyback.business.products.Dtos.ProductPostRequest;
-import com.example.innerbeautyback.business.products.Dtos.ProductResponse;
-import com.example.innerbeautyback.business.products.Dtos.ProductsSearchRequest;
+import com.example.innerbeautyback.business.products.Dtos.*;
 import com.example.innerbeautyback.domain.country.CountryService;
 import com.example.innerbeautyback.domain.image.Image;
 import com.example.innerbeautyback.domain.image.ImageService;
@@ -17,6 +14,7 @@ import com.example.innerbeautyback.domain.product.category.CategoryService;
 import com.example.innerbeautyback.domain.user.User;
 import com.example.innerbeautyback.domain.user.UserService;
 import com.example.innerbeautyback.domain.user.favorite.Favorite;
+import com.example.innerbeautyback.domain.user.favorite.FavoriteMapper;
 import com.example.innerbeautyback.domain.user.favorite.FavoriteService;
 import com.example.innerbeautyback.domain.user.userproduct.UserProduct;
 import com.example.innerbeautyback.domain.user.userproduct.UserProductMapper;
@@ -66,6 +64,9 @@ public class ProductsService {
 
     @Resource
     private UserProductService userProductService;
+
+    @Resource
+    private FavoriteMapper  favoriteMapper;
 
 
     public List<ProductResponse> getProductsBy(ProductsSearchRequest request) {
@@ -143,6 +144,13 @@ public class ProductsService {
 
         }
 
+
+    }
+
+    public List<ProductFavoriteResponse> getAllProductsInFavorite(Integer buyerId) {
+        List<Favorite> favorites = favoriteService.getAllFavoritesBy(buyerId);
+        List<ProductFavoriteResponse> favoriteCartResponse = favoriteService.findAllProductsInFavorite(buyerId);
+        return favoriteCartResponse;
 
     }
 }
