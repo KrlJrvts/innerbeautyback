@@ -23,8 +23,8 @@ public interface UserMapper {
     User toRegisterUser(UserRequest userRequest);
 
     @Mapping(source = "userPassword", target = "password")
-    @Mapping(ignore = true, target = "image")
-    void toEditUser(UserEditRequest userEditRequest, @MappingTarget User user);
+    @Mapping(source = "userImage", target = "image" , qualifiedByName = "imageDataToImage")
+    User toEditUser(UserEditRequest userEditRequest, @MappingTarget User user);
 
     @Named("imageDataToImage")
     static Image imageDataToImage(String imageData) {
