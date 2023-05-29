@@ -1,9 +1,10 @@
 package com.example.innerbeautyback.domain.product.gender;
 
-import com.example.innerbeautyback.business.country.CountryResponse;
 import com.example.innerbeautyback.business.gender.GenderResponse;
-import com.example.innerbeautyback.domain.country.Country;
-import org.mapstruct.*;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingConstants;
+import org.mapstruct.ReportingPolicy;
 
 import java.util.List;
 

@@ -2,10 +2,9 @@ package com.example.innerbeautyback.domain.product;
 
 import com.example.innerbeautyback.business.Status;
 import com.example.innerbeautyback.business.products.Dtos.ProductCartResponse;
-import com.example.innerbeautyback.business.products.Dtos.ProductResponse;
 import com.example.innerbeautyback.business.products.Dtos.ProductPostRequest;
+import com.example.innerbeautyback.business.products.Dtos.ProductResponse;
 import com.example.innerbeautyback.domain.image.Image;
-import com.example.innerbeautyback.domain.user.userproduct.UserProduct;
 import com.example.innerbeautyback.util.ImageUtil;
 import org.mapstruct.*;
 

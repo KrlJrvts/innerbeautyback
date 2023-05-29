@@ -1,8 +1,6 @@
 package com.example.innerbeautyback.domain.user.userproduct;
 
 import com.example.innerbeautyback.business.Status;
-import com.example.innerbeautyback.business.products.Dtos.ProductCartResponse;
-import com.example.innerbeautyback.domain.product.Product;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
@@ -22,8 +20,7 @@ public class UserProductService {
     }
 
     public List<UserProduct> getAllProductsInCart(Integer buyerId) {
-        List<UserProduct> userProducts = userProductRepository.findAllBy(buyerId, Status.CART.getLetter());
-        return userProducts;
+        return userProductRepository.findAllBy(buyerId, Status.CART.getLetter());
     }
 
     public List<UserProduct> getCartProducts() {

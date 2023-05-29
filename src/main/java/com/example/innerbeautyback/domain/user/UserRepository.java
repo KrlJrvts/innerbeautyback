@@ -1,6 +1,5 @@
 package com.example.innerbeautyback.domain.user;
 
-import org.mapstruct.control.MappingControl;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

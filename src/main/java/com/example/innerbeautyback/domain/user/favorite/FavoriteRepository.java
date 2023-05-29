@@ -1,9 +1,7 @@
 package com.example.innerbeautyback.domain.user.favorite;
 
-import com.example.innerbeautyback.domain.product.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Optional;

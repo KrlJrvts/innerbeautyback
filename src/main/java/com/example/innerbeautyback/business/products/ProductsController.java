@@ -37,8 +37,7 @@ public class ProductsController {
 
     @PostMapping("/products/category-all")
     @Operation(summary = "Returns products requested by categoryId,countryId and bloodgroupId, ",
-            description = """
-                    When countryId and bloodgroupId is not chosen (0) then all products are listed """)
+            description = "When countryId and bloodgroupId is not chosen (0) then all products are listed ")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK"),
             @ApiResponse(responseCode = "403", description = "Requested Category not found", content = @Content(schema = @Schema(implementation = ApiError.class)))})
@@ -59,8 +58,7 @@ public class ProductsController {
 
     @PatchMapping("/products/cart-add")
     @Operation(summary = "Add product to cart",
-            description = """
-                    Product is added to cart based on productId, buyerId""")
+            description = "Product is added to cart based on productId, buyerId")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Product added to a cart"),
             @ApiResponse(responseCode = "403", description = "Requested Product not found", content = @Content(schema = @Schema(implementation = ApiError.class)))})
@@ -83,8 +81,7 @@ public class ProductsController {
 
     @DeleteMapping("/products/cart-delete")
     @Operation(summary = "Delete products from cart",
-            description = """
-                    Product is deleted from cart based on productId and buyerId""")
+            description = "Product is deleted from cart based on productId and buyerId")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Product deleted from cart"),
             @ApiResponse(responseCode = "403", description = "Requested Product not found")})
@@ -94,8 +91,7 @@ public class ProductsController {
 
     @PatchMapping("/products/cart-remove")
     @Operation(summary = "Remove product from cart",
-            description = """
-                    Product is removed from cart based on productId and buyerId""")
+            description = "Product is removed from cart based on productId and buyerId")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Product removed from cart"),
             @ApiResponse(responseCode = "403", description = "Requested Product not found")})
@@ -124,7 +120,6 @@ public class ProductsController {
             @ApiResponse(responseCode = "200", description = "You have products in favorite"),
             @ApiResponse(responseCode = "403", description = "No products in favorite")})
     public List<ProductFavoriteResponse> findAllProductsInFavorite(@RequestParam Integer buyerId) {
-        List<ProductFavoriteResponse> favoriteItems = favoriteService.findAllProductsInFavorite(buyerId);
-        return favoriteItems;
+        return favoriteService.findAllProductsInFavorite(buyerId);
     }
 }

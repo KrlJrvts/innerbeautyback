@@ -114,8 +114,7 @@ public class ProductsService {
 
     public List<ProductCartResponse> getAllProductsInCart(Integer buyerId) {
         List<UserProduct> userProducts = userProductService.getAllProductsInCart(buyerId);
-        List<ProductCartResponse> productCartResponses = userProductMapper.toProductCartResponses(userProducts);
-        return productCartResponses;
+        return userProductMapper.toProductCartResponses(userProducts);
     }
 
     public void deleteProductFromCart(Integer buyerId) {
@@ -138,11 +137,5 @@ public class ProductsService {
             favorite.setBuyer(buyer);
             favoriteService.addFavorite(favorite);
         }
-    }
-
-    public List<ProductFavoriteResponse> getAllProductsInFavorite(Integer buyerId) {
-        List<Favorite> favorites = favoriteService.getAllFavoritesBy(buyerId);
-        List<ProductFavoriteResponse> favoriteCartResponse = favoriteService.findAllProductsInFavorite(buyerId);
-        return favoriteCartResponse;
     }
 }
