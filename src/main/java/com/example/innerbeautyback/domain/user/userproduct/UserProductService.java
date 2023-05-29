@@ -23,10 +23,6 @@ public class UserProductService {
         return userProductRepository.findAllBy(buyerId, Status.CART.getLetter());
     }
 
-    public List<UserProduct> getCartProducts() {
-        return userProductRepository.findAllByStatus(Status.CART.getLetter());
-    }
-
     public void deactivateProductFromCart(Integer buyerId) {
         List<UserProduct> userProducts = userProductRepository.getProductsInCartBy(Status.CART.getLetter(), buyerId);
         for (UserProduct userProduct : userProducts) {

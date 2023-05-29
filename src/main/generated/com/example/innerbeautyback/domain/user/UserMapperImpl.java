@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-05-29T15:53:12+0300",
+    date = "2023-05-29T20:12:55+0300",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 @Component
@@ -48,12 +48,15 @@ public class UserMapperImpl implements UserMapper {
     }
 
     @Override
-    public void toEditUser(UserEditRequest userEditRequest, User user) {
+    public User toEditUser(UserEditRequest userEditRequest, User user) {
         if ( userEditRequest == null ) {
-            return;
+            return user;
         }
 
         user.setPassword( userEditRequest.getUserPassword() );
+        user.setImage( UserMapper.imageDataToImage( userEditRequest.getUserImage() ) );
+
+        return user;
     }
 
     private String userRoleName(User user) {
