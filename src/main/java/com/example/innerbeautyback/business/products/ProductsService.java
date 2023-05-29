@@ -23,6 +23,7 @@ import com.example.innerbeautyback.domain.user.userproduct.UserProductMapper;
 import com.example.innerbeautyback.domain.user.userproduct.UserProductService;
 import com.example.innerbeautyback.util.ImageUtil;
 import jakarta.annotation.Resource;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,7 +32,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
-@Setter
+@RequiredArgsConstructor
 public class ProductsService {
 
     @Resource
@@ -68,7 +69,6 @@ public class ProductsService {
     private UserProductService userProductService;
 
 
-
     public List<ProductResponse> getProductsBy(ProductsSearchRequest request) {
         List<Product> products = productService.getProducts(request);
         List<ProductResponse> productResponse = productMapper.toProductResponse(products);
@@ -102,8 +102,10 @@ public class ProductsService {
     public void addProductToCart(Integer productId, Integer buyerId) {
         UserProduct userProduct = userProductService.getProductBy(productId);
         userProduct.setBuyer(userService.getUserBy(buyerId));
+        Product product = productService.findActiveProductBy(productId);
+        product.setStatus(Status.CART.getLetter());
+        productService.addProduct(product);
         userProductService.addUserProduct(userProduct);
-
     }
 
     public void addImageIfPresent(Image image) {
@@ -114,22 +116,17 @@ public class ProductsService {
 
 
     public List<ProductCartResponse> getAllProductsInCart(Integer buyerId) {
-        List <UserProduct> userProducts = userProductService.getAllProductsInCart(buyerId);
+        List<UserProduct> userProducts = userProductService.getAllProductsInCart(buyerId);
         List<ProductCartResponse> productCartResponses = userProductMapper.toProductCartResponses(userProducts);
         return productCartResponses;
     }
 
     public void deleteProductFromCart(Integer buyerId) {
+
         userProductService.deactivateProductFromCart(buyerId);
     }
 
     public void removeProductFromCart(Integer buyerId, Integer productId) {
         userProductService.removeProductFromCart(buyerId, productId);
     }
-
-
-
-
-
-
 }

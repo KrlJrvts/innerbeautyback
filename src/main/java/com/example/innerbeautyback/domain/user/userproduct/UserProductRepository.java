@@ -12,7 +12,6 @@ public interface UserProductRepository extends JpaRepository<UserProduct, Intege
     UserProduct getProductBy(Integer productId);
 
 
-
     @Query("select u from UserProduct u where u.buyer.id = ?1 and u.product.status = ?2")
     List<UserProduct> findAllBy(Integer userId, String productStatus);
 
