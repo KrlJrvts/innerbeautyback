@@ -7,14 +7,13 @@ import java.util.List;
 
 
 public interface ProductRepository extends JpaRepository<Product, Integer> {
-    @Query("select p from Product p where (p.category.id = ?1 or ?1 = 0) and p.status = ?2")
-    List<Product> findActiveAndInCartProductsBy(Integer id, String status);
 
     @Query("select p from Product p where p.category.id = ?1 and (p.country.id = ?2 or ?2 = 0) and (p.bloodgroup.id = ?3 or ?3 = 0) and (p.status = 'C' or p.status = 'A')")
     List<Product> findActiveAndInCartProductsBy(Integer categoryId, Integer countryId, Integer bloodgroupId);
 
     @Query("select p from Product p where p.id = ?1 and p.status = ?2")
-    Product getProductBy(Integer productId, String status);
+    Product getProductBy(Integer productId, String productStatus);
+
 
 
 

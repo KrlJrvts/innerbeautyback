@@ -134,10 +134,8 @@ public class ProductsService {
         if (favoriteOptional.isPresent()) {
             favoriteService.deleteFavorite(favoriteOptional.get());
         } else {
-
-            Product product = productService.findActiveProductBy(productId);
+            Product product = productService.getProductBy(productId);
             User buyer = userService.getUserBy(buyerId);
-
             Favorite favorite = new Favorite();
             favorite.setProduct(product);
             favorite.setBuyer(buyer);
