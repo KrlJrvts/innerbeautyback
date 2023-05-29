@@ -28,6 +28,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -128,16 +129,20 @@ public class ProductsService {
         userProductService.removeProductFromCart(buyerId, productId);
     }
 
-    public void addProductToFavorite(Integer buyerId, Integer productId) {
-        favoriteService.validateFavoriteBy(buyerId, productId);
-        Product product = productService.findActiveProductBy(productId);
-        User buyer = userService.getUserBy(buyerId);
+    public void addOrRemoveProductFromFavorite(Integer buyerId, Integer productId) {
+        Optional<Favorite> favoriteOptional = favoriteService.findOptionalFavoriteBy(buyerId, productId);
+        if (favoriteOptional.isPresent()) {
+            favoriteService.deleteFavorite(favoriteOptional.get());
+        } else {
+            Product product = productService.getProductBy(productId);
+            User buyer = userService.getUserBy(buyerId);
+            Favorite favorite = new Favorite();
+            favorite.setProduct(product);
+            favorite.setBuyer(buyer);
+            favoriteService.addFavorite(favorite);
+
+        }
 
 
-        Favorite favorite = new Favorite();
-        favorite.setProduct(productService.findActiveProductBy(productId));
-        favorite.setBuyer(userService.getUserBy(buyerId));
-        favoriteService.addFavorite(favorite);
     }
-
 }
