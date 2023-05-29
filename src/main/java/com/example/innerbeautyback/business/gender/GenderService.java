@@ -20,17 +20,14 @@ public class GenderService {
     private GenderRepository genderRepository;
 
     public GenderService(GenderRepository genderRepository) {
-
         this.genderRepository = genderRepository;
     }
 
     public Gender findById(Integer genderId) {
-
         return genderRepository.findById(genderId).get();
     }
 
     public List<GenderResponse> getGenders() {
-
         List<Gender> genders = gendersService.getGenders();
         return genderMapper.toDtos(genders);
     }

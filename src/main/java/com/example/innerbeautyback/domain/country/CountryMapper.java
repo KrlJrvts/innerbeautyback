@@ -11,6 +11,5 @@ public interface CountryMapper {
     @Mapping(source = "id", target = "countryId")
     @Mapping(source = "name", target = "countryName")
     CountryResponse toDto(Country country);
-
     List<CountryResponse> toDtos(List<Country> countries);
 }

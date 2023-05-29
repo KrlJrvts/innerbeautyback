@@ -11,10 +11,10 @@ import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING, imports = {Status.class})
 public interface UserMapper {
+
     @Mapping(source = "id", target = "userId")
     @Mapping(source = "role.name", target = "roleName")
     LoginResponse toLoginResponse(User user);
-
 
     @Mapping(source = "userEmail", target = "email")
     @Mapping(source = "userPassword", target = "password")
@@ -22,11 +22,9 @@ public interface UserMapper {
     @Mapping(source = "userImage", target = "image", qualifiedByName = "imageDataToImage")
     User toRegisterUser(UserRequest userRequest);
 
-
     @Mapping(source = "userPassword", target = "password")
     @Mapping(ignore = true, target = "image")
     void toEditUser(UserEditRequest userEditRequest, @MappingTarget User user);
-
 
     @Named("imageDataToImage")
     static Image imageDataToImage(String imageData) {

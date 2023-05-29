@@ -1,6 +1,5 @@
 package com.example.innerbeautyback.domain.user;
 
-import org.mapstruct.control.MappingControl;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -15,6 +14,4 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     @Query("select u from User u where u.id =?1")
     User getUserBy(Integer userId);
-
-
 }

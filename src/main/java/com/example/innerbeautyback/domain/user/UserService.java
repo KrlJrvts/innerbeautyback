@@ -29,7 +29,6 @@ public class UserService {
         userRepository.save(user);
     }
 
-
     public User getUserBy(Integer userId) {
         return userRepository.getUserBy(userId);
     }

@@ -10,9 +10,7 @@ public class ImageService {
     private ImageRepository imageRepository;
 
     public void addImage(Image image) {
-
         imageRepository.save(image);
     }
-
 }
 

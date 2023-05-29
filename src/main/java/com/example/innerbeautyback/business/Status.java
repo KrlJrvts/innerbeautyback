@@ -10,7 +10,6 @@ public enum Status {
     DELETED("D"),
     CART("C");
 
-
     private final String letter;
 
     Status(String letter) {

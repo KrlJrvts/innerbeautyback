@@ -13,11 +13,10 @@ public class BloodGroupController {
     @Resource
     private BloodGroupsService bloodGroupsService;
 
-
     @GetMapping("/products/bloodgroups")
     @Operation(
-            summary = "Returns all bloodgroups (from database bloodgroup table).",
-            description = "Returns bloodgroupTypeId and bloodGroupTypeName.")
+            summary = "Returns all bloodGroups (from database bloodGroup table).",
+            description = "Returns bloodGroupTypeId and bloodGroupTypeName.")
     public List<BloodGroupResponse> getBloodgroups() {
         return bloodGroupsService.getBloodGroups();
     }

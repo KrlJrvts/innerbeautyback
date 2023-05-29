@@ -1,6 +1,5 @@
 package com.example.innerbeautyback.business.login;
 
-
 import com.example.innerbeautyback.infrastructure.error.ApiError;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -28,8 +27,6 @@ public class LoginController {
             @ApiResponse(responseCode = "403", description = "Wrong email or password", content = @Content(schema = @Schema(implementation = ApiError.class)))})
     public LoginResponse login(@RequestParam String email, @RequestParam String password) {
         return loginService.login(email, password);
-
     }
-
 }
 

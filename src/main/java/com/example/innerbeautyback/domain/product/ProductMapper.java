@@ -1,11 +1,10 @@
 package com.example.innerbeautyback.domain.product;
 
 import com.example.innerbeautyback.business.Status;
-import com.example.innerbeautyback.business.products.Dtos.ProductCartResponse;
-import com.example.innerbeautyback.business.products.Dtos.ProductResponse;
-import com.example.innerbeautyback.business.products.Dtos.ProductPostRequest;
+import com.example.innerbeautyback.business.products.dtos.ProductCartResponse;
+import com.example.innerbeautyback.business.products.dtos.ProductPostRequest;
+import com.example.innerbeautyback.business.products.dtos.ProductResponse;
 import com.example.innerbeautyback.domain.image.Image;
-import com.example.innerbeautyback.domain.user.userproduct.UserProduct;
 import com.example.innerbeautyback.util.ImageUtil;
 import org.mapstruct.*;
 
@@ -29,7 +28,6 @@ public interface ProductMapper {
     @Mapping(source = "image", target = "imageData",qualifiedByName = "imageToImageData")
     ProductResponse toDto(Product product);
 
-
     @Mapping(source ="productAge", target = "age")
     @Mapping(source ="productDescription", target = "description")
     @Mapping(source ="productAvailableAt", target = "availableAt")
@@ -37,7 +35,6 @@ public interface ProductMapper {
     @Mapping(expression ="java(Status.ACTIVE.getLetter())", target = "status")
     @Mapping(source ="productImage", target = "image", qualifiedByName = "imageDataToImage")
     Product toAddProduct(ProductPostRequest productPostRequest);
-
 
     ProductCartResponse toProductCartResponse(Product product);
     List <ProductResponse> toProductResponse(List<Product> products);
@@ -58,6 +55,4 @@ public interface ProductMapper {
         }
         return ImageUtil.byteArrayToBase64ImageData(image.getData());
     }
-
-
 }

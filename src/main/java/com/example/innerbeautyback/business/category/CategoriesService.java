@@ -17,11 +17,8 @@ public class CategoriesService {
     @Resource
     private CategoryMapper categoryMapper;
 
-
     public List<CategoryResponse> getCategories() {
         List<Category> categories = categoryService.getCategories();
         return categoryMapper.toCategoryRequests(categories);
-
-
     }
 }

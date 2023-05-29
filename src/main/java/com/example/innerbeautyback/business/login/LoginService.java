@@ -1,6 +1,5 @@
 package com.example.innerbeautyback.business.login;
 
-
 import com.example.innerbeautyback.domain.user.User;
 import com.example.innerbeautyback.domain.user.UserMapper;
 import com.example.innerbeautyback.domain.user.UserService;
@@ -12,7 +11,6 @@ public class LoginService {
 
     @Resource
     private UserService userService;
-
 
     @Resource
     private UserMapper userMapper;

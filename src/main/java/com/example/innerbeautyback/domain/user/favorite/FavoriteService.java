@@ -1,6 +1,6 @@
 package com.example.innerbeautyback.domain.user.favorite;
 
-import com.example.innerbeautyback.business.products.Dtos.ProductFavoriteResponse;
+import com.example.innerbeautyback.business.products.dtos.ProductFavoriteResponse;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,6 @@ public class FavoriteService {
     @Resource
     private FavoriteMapper favoriteMapper;
 
-
     public boolean favoriteExistsBy(Integer buyerId, Integer productId) {
         return favoriteRepository.favoriteExistsBy(buyerId, productId);
     }
@@ -30,9 +29,6 @@ public class FavoriteService {
 
     }
 
-
-
-
     public void deleteFavorite(Favorite favorite) {
         favoriteRepository.delete(favorite);
     }
@@ -43,9 +39,6 @@ public class FavoriteService {
 
     public List<ProductFavoriteResponse> findAllProductsInFavorite(Integer buyerId) {
         List <Favorite> favorites = favoriteRepository.findAllByBuyerId(buyerId);
-        List <ProductFavoriteResponse> productFavoriteResponses = favoriteMapper.toProductFavoriteResponses(favorites);
-        return productFavoriteResponses;
-
+        return favoriteMapper.toProductFavoriteResponses(favorites);
     }
-
 }

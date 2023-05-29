@@ -1,4 +1,4 @@
-package com.example.innerbeautyback.business.products.Dtos;
+package com.example.innerbeautyback.business.products.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

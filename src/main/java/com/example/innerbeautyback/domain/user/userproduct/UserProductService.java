@@ -1,8 +1,6 @@
 package com.example.innerbeautyback.domain.user.userproduct;
 
 import com.example.innerbeautyback.business.Status;
-import com.example.innerbeautyback.business.products.Dtos.ProductCartResponse;
-import com.example.innerbeautyback.domain.product.Product;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
@@ -18,14 +16,11 @@ public class UserProductService {
     }
 
     public UserProduct getProductBy(Integer productId) {
-
         return userProductRepository.getProductBy(productId);
     }
 
     public List<UserProduct> getAllProductsInCart(Integer buyerId) {
-        List<UserProduct> userProducts = userProductRepository.findAllBy(buyerId, Status.CART.getLetter());
-        return userProducts;
-
+        return userProductRepository.findAllBy(buyerId, Status.CART.getLetter());
     }
 
     public List<UserProduct> getCartProducts() {
@@ -33,12 +28,11 @@ public class UserProductService {
     }
 
     public void deactivateProductFromCart(Integer buyerId) {
-        List <UserProduct>  userProducts = userProductRepository.getProductsInCartBy(Status.CART.getLetter(), buyerId);
+        List<UserProduct> userProducts = userProductRepository.getProductsInCartBy(Status.CART.getLetter(), buyerId);
         for (UserProduct userProduct : userProducts) {
             userProduct.getProduct().setStatus(Status.DELETED.getLetter());
             userProductRepository.save(userProduct);
         }
-
     }
 
     public void removeProductFromCart(Integer buyerId, Integer productId) {
@@ -47,8 +41,5 @@ public class UserProductService {
         userProduct.setBuyer(null);
         userProduct.setTimestamp(null);
         userProductRepository.save(userProduct);
-
-
-
     }
 }

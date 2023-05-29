@@ -2,7 +2,7 @@ package com.example.innerbeautyback.domain.product;
 
 
 import com.example.innerbeautyback.business.Status;
-import com.example.innerbeautyback.business.products.Dtos.ProductsSearchRequest;
+import com.example.innerbeautyback.business.products.dtos.ProductsSearchRequest;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +27,6 @@ public class ProductService {
     public Product findActiveProductBy(Integer productId) {
         return productRepository.getProductBy(productId, Status.ACTIVE.getLetter());
     }
-
 
     public Product getProductBy(Integer productId) {
         return productRepository.findById(productId).get();

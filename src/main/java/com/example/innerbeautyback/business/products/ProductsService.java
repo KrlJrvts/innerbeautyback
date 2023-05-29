@@ -3,7 +3,7 @@ package com.example.innerbeautyback.business.products;
 import com.example.innerbeautyback.business.Status;
 import com.example.innerbeautyback.business.bloodgroup.BloodGroupsService;
 import com.example.innerbeautyback.business.gender.GenderService;
-import com.example.innerbeautyback.business.products.Dtos.*;
+import com.example.innerbeautyback.business.products.dtos.*;
 import com.example.innerbeautyback.domain.country.CountryService;
 import com.example.innerbeautyback.domain.image.Image;
 import com.example.innerbeautyback.domain.image.ImageService;
@@ -54,20 +54,19 @@ public class ProductsService {
     private GenderService genderService;
 
     @Resource
-    private ProductMapper productMapper;
-
-    @Resource
-    private UserProductMapper userProductMapper;
-
-    @Resource
     private UserService userService;
 
     @Resource
     private UserProductService userProductService;
 
     @Resource
-    private FavoriteMapper  favoriteMapper;
+    private ProductMapper productMapper;
 
+    @Resource
+    private UserProductMapper userProductMapper;
+
+    @Resource
+    private FavoriteMapper  favoriteMapper;
 
     public List<ProductResponse> getProductsBy(ProductsSearchRequest request) {
         List<Product> products = productService.getProducts(request);
@@ -95,8 +94,6 @@ public class ProductsService {
         userProduct.setProduct(product);
         userProduct.setSeller(userService.getUserBy(productPostRequest.getProductSellerId()));
         userProductService.addUserProduct(userProduct);
-
-
     }
 
     public void addProductToCart(Integer productId, Integer buyerId) {
@@ -117,12 +114,10 @@ public class ProductsService {
 
     public List<ProductCartResponse> getAllProductsInCart(Integer buyerId) {
         List<UserProduct> userProducts = userProductService.getAllProductsInCart(buyerId);
-        List<ProductCartResponse> productCartResponses = userProductMapper.toProductCartResponses(userProducts);
-        return productCartResponses;
+        return userProductMapper.toProductCartResponses(userProducts);
     }
 
     public void deleteProductFromCart(Integer buyerId) {
-
         userProductService.deactivateProductFromCart(buyerId);
     }
 
@@ -141,16 +136,6 @@ public class ProductsService {
             favorite.setProduct(product);
             favorite.setBuyer(buyer);
             favoriteService.addFavorite(favorite);
-
         }
-
-
-    }
-
-    public List<ProductFavoriteResponse> getAllProductsInFavorite(Integer buyerId) {
-        List<Favorite> favorites = favoriteService.getAllFavoritesBy(buyerId);
-        List<ProductFavoriteResponse> favoriteCartResponse = favoriteService.findAllProductsInFavorite(buyerId);
-        return favoriteCartResponse;
-
     }
 }
