@@ -14,7 +14,6 @@ public class UserProductService {
     private UserProductRepository userProductRepository;
 
     public void addUserProduct(UserProduct userProduct) {
-
         userProductRepository.save(userProduct);
     }
 
