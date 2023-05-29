@@ -83,6 +83,7 @@ CREATE TABLE user_product (
                               product_id int  NOT NULL,
                               seller_id int  NOT NULL,
                               buyer_id int  NULL,
+                              timestamp timestamp NULL,
                               CONSTRAINT user_product_pk PRIMARY KEY (id)
 );
 -- foreign keys

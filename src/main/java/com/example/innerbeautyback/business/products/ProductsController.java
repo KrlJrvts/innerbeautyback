@@ -6,6 +6,7 @@ import com.example.innerbeautyback.business.products.Dtos.ProductCartResponse;
 import com.example.innerbeautyback.business.products.Dtos.ProductPostRequest;
 import com.example.innerbeautyback.business.products.Dtos.ProductResponse;
 import com.example.innerbeautyback.business.products.Dtos.ProductsSearchRequest;
+import com.example.innerbeautyback.domain.user.favorite.FavoriteService;
 import com.example.innerbeautyback.infrastructure.error.ApiError;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -24,6 +25,9 @@ public class ProductsController {
     private ProductsService productsService;
     @Resource
     private CategoriesService categoriesService;
+
+    @Resource
+    private FavoriteService favoriteService;
 
 
     @GetMapping("/products/categories")
@@ -86,5 +90,29 @@ public class ProductsController {
         List <ProductCartResponse> cartItems = productsService.getAllProductsInCart(buyerId);
         return cartItems;
     }
+
+    @DeleteMapping("/products/cart-delete")
+    @Operation(summary = "Delete products from cart",
+            description = """
+                    Product is deleted from cart based on productId and buyerId""")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Product deleted from cart"),
+            @ApiResponse(responseCode = "403", description = "Requested Product not found")})
+    public void deleteProductFromCart(@RequestParam Integer buyerId) {
+        productsService.deleteProductFromCart(buyerId);
+    }
+
+    @PatchMapping("/products/cart-remove")
+    @Operation(summary = "Remove product from cart",
+            description = """
+                    Product is removed from cart based on productId and buyerId""")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Product removed from cart"),
+            @ApiResponse(responseCode = "403", description = "Requested Product not found")})
+    public void removeProductFromCart(@RequestParam Integer buyerId, @RequestParam Integer productId) {
+        productsService.removeProductFromCart(buyerId, productId);
+    }
+
+
 
 }
