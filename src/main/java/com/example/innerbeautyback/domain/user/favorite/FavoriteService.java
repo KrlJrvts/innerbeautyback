@@ -10,9 +10,16 @@ public class FavoriteService {
     @Resource
     private FavoriteRepository favoriteRepository;
 
+    public Favorite getProductBy(Integer productId) {
+        return favoriteRepository.getProductBy(productId);
+    }
+
     public boolean favoriteExistsBy(Integer buyerId, Integer productId) {
        return favoriteRepository.favoriteExistsBy(buyerId, productId);
     }
 
 
+    public void addFavorite(Favorite favorite) {
+        favoriteRepository.save(favorite);
+    }
 }

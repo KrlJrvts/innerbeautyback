@@ -113,6 +113,17 @@ public class ProductsController {
         productsService.removeProductFromCart(buyerId, productId);
     }
 
+    @GetMapping("/products/favorite-add")
+    @Operation(summary = "Add product to favorite",
+            description = """
+                    Product is added to favorite based on productId and buyerId""")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Product added to favorite"),
+            @ApiResponse(responseCode = "403", description = "Requested Product not found")})
+    public void addProductToFavorite(@RequestParam Integer buyerId, @RequestParam Integer productId) {
+        productsService.addProductToFavorite(productId, buyerId);
+    }
+
 
 
 }

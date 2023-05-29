@@ -28,4 +28,5 @@ public class ProductResponse implements Serializable {
     private Integer bloodgroupTypeId;
     private String imageData;
     private Boolean isInFavourites;
+    private String status;
 }

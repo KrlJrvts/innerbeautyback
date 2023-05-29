@@ -129,4 +129,12 @@ public class ProductsService {
     public void removeProductFromCart(Integer buyerId, Integer productId) {
         userProductService.removeProductFromCart(buyerId, productId);
     }
+
+    public void addProductToFavorite(Integer productId, Integer buyerId) {
+        Favorite favorite = favoriteService.getProductBy(productId);
+        favorite.setBuyer(userService.getUserBy(buyerId));
+        favoriteService.addFavorite(favorite);
+
+
+    }
 }
