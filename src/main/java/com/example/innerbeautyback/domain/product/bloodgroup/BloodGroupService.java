@@ -11,8 +11,6 @@ public class BloodGroupService {
     private BloodGroupRepository bloodGroupRepository;
 
     public List<BloodGroup> getBloodGroups() {
-
         return bloodGroupRepository.findAll();
-
     }
 }

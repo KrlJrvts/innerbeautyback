@@ -9,11 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UsersController {
-
-
     @Resource
     private UsersService usersService;
-
 
     @PostMapping("/user/register")
     @Operation(summary = "Register new user by email, password, firstName, lastName", description = """
@@ -25,7 +22,6 @@ public class UsersController {
     public void addUser(@RequestBody UserRequest userRequest) {
         usersService.addUser(userRequest);
     }
-
 
     @PutMapping("/user/edit")
     @Operation(summary = "Edit user by password, image", description = """

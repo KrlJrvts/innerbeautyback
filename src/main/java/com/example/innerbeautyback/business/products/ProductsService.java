@@ -54,20 +54,19 @@ public class ProductsService {
     private GenderService genderService;
 
     @Resource
-    private ProductMapper productMapper;
-
-    @Resource
-    private UserProductMapper userProductMapper;
-
-    @Resource
     private UserService userService;
 
     @Resource
     private UserProductService userProductService;
 
     @Resource
-    private FavoriteMapper  favoriteMapper;
+    private ProductMapper productMapper;
 
+    @Resource
+    private UserProductMapper userProductMapper;
+
+    @Resource
+    private FavoriteMapper  favoriteMapper;
 
     public List<ProductResponse> getProductsBy(ProductsSearchRequest request) {
         List<Product> products = productService.getProducts(request);
@@ -95,8 +94,6 @@ public class ProductsService {
         userProduct.setProduct(product);
         userProduct.setSeller(userService.getUserBy(productPostRequest.getProductSellerId()));
         userProductService.addUserProduct(userProduct);
-
-
     }
 
     public void addProductToCart(Integer productId, Integer buyerId) {
@@ -122,7 +119,6 @@ public class ProductsService {
     }
 
     public void deleteProductFromCart(Integer buyerId) {
-
         userProductService.deactivateProductFromCart(buyerId);
     }
 
@@ -141,16 +137,12 @@ public class ProductsService {
             favorite.setProduct(product);
             favorite.setBuyer(buyer);
             favoriteService.addFavorite(favorite);
-
         }
-
-
     }
 
     public List<ProductFavoriteResponse> getAllProductsInFavorite(Integer buyerId) {
         List<Favorite> favorites = favoriteService.getAllFavoritesBy(buyerId);
         List<ProductFavoriteResponse> favoriteCartResponse = favoriteService.findAllProductsInFavorite(buyerId);
         return favoriteCartResponse;
-
     }
 }

@@ -16,7 +16,6 @@ public class FavoriteService {
     @Resource
     private FavoriteMapper favoriteMapper;
 
-
     public boolean favoriteExistsBy(Integer buyerId, Integer productId) {
         return favoriteRepository.favoriteExistsBy(buyerId, productId);
     }
@@ -30,9 +29,6 @@ public class FavoriteService {
 
     }
 
-
-
-
     public void deleteFavorite(Favorite favorite) {
         favoriteRepository.delete(favorite);
     }
@@ -45,7 +41,5 @@ public class FavoriteService {
         List <Favorite> favorites = favoriteRepository.findAllByBuyerId(buyerId);
         List <ProductFavoriteResponse> productFavoriteResponses = favoriteMapper.toProductFavoriteResponses(favorites);
         return productFavoriteResponses;
-
     }
-
 }

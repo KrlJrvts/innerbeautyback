@@ -1,6 +1,5 @@
 package com.example.innerbeautyback.business.gender;
 
-
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +12,7 @@ public class GenderController {
 
     @Resource
     private GenderService genderService;
+
     @GetMapping("/products/genders")
     @Operation(
             summary = "Returns all genders (from database gender table).",
@@ -21,5 +21,4 @@ public class GenderController {
 
         return genderService.getGenders();
     }
-
 }

@@ -18,14 +18,12 @@ public class UserProductService {
     }
 
     public UserProduct getProductBy(Integer productId) {
-
         return userProductRepository.getProductBy(productId);
     }
 
     public List<UserProduct> getAllProductsInCart(Integer buyerId) {
         List<UserProduct> userProducts = userProductRepository.findAllBy(buyerId, Status.CART.getLetter());
         return userProducts;
-
     }
 
     public List<UserProduct> getCartProducts() {
@@ -38,7 +36,6 @@ public class UserProductService {
             userProduct.getProduct().setStatus(Status.DELETED.getLetter());
             userProductRepository.save(userProduct);
         }
-
     }
 
     public void removeProductFromCart(Integer buyerId, Integer productId) {
@@ -47,8 +44,5 @@ public class UserProductService {
         userProduct.setBuyer(null);
         userProduct.setTimestamp(null);
         userProductRepository.save(userProduct);
-
-
-
     }
 }

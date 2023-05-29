@@ -19,7 +19,6 @@ public class CountriesService {
 
     public List<CountryResponse> getCountries() {
         List<Country> countries = countryService.getCountries();
-
         return countryMapper.toDtos(countries);
     }
 }

@@ -28,7 +28,6 @@ public interface ProductMapper {
     @Mapping(source = "image", target = "imageData",qualifiedByName = "imageToImageData")
     ProductResponse toDto(Product product);
 
-
     @Mapping(source ="productAge", target = "age")
     @Mapping(source ="productDescription", target = "description")
     @Mapping(source ="productAvailableAt", target = "availableAt")
@@ -36,7 +35,6 @@ public interface ProductMapper {
     @Mapping(expression ="java(Status.ACTIVE.getLetter())", target = "status")
     @Mapping(source ="productImage", target = "image", qualifiedByName = "imageDataToImage")
     Product toAddProduct(ProductPostRequest productPostRequest);
-
 
     ProductCartResponse toProductCartResponse(Product product);
     List <ProductResponse> toProductResponse(List<Product> products);
@@ -57,6 +55,4 @@ public interface ProductMapper {
         }
         return ImageUtil.byteArrayToBase64ImageData(image.getData());
     }
-
-
 }

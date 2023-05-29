@@ -11,7 +11,6 @@ public interface CategoryMapper {
     @Mapping(source = "id", target = "categoryId")
     @Mapping(source = "name", target = "categoryName")
     CategoryResponse toCategoryRequest(Category category);
-
     List<CategoryResponse> toCategoryRequests(List<Category> categories);
 
 }

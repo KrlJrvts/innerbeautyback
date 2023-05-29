@@ -10,7 +10,6 @@ import java.util.Optional;
 
 public interface FavoriteRepository extends JpaRepository<Favorite, Integer> {
 
-
     @Query("select (count(f) > 0) from Favorite f where f.buyer.id = ?1 and f.product.id = ?2 ")
     boolean favoriteExistsBy(Integer buyerId, Integer productId);
 
@@ -23,7 +22,5 @@ public interface FavoriteRepository extends JpaRepository<Favorite, Integer> {
     @Query("select f from Favorite f where f.buyer.id = ?1 and (f.product.status = 'C' or f.product.status = 'A')")
     List<Favorite> findAllFavoriteBy(Integer userId);
 
-
-    
     List<Favorite> findAllByBuyerId(Integer buyerId);
 }

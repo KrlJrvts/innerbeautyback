@@ -20,12 +20,12 @@ public class ProductsController {
 
     @Resource
     private ProductsService productsService;
+
     @Resource
     private CategoriesService categoriesService;
 
     @Resource
     private FavoriteService favoriteService;
-
 
     @GetMapping("/products/categories")
     @Operation(
@@ -34,7 +34,6 @@ public class ProductsController {
     public List<CategoryResponse> getCategories() {
         return categoriesService.getCategories();
     }
-
 
     @PostMapping("/products/category-all")
     @Operation(summary = "Returns products requested by categoryId,countryId and bloodgroupId, ",
@@ -45,9 +44,7 @@ public class ProductsController {
             @ApiResponse(responseCode = "403", description = "Requested Category not found", content = @Content(schema = @Schema(implementation = ApiError.class)))})
     public List<ProductResponse> getProductsBy(@RequestBody ProductsSearchRequest productsSearchRequest) {
         return productsService.getProductsBy(productsSearchRequest);
-
     }
-
 
     @PostMapping("/products/add")
     @Operation(summary = "Add product to store",
@@ -58,11 +55,7 @@ public class ProductsController {
             @ApiResponse(responseCode = "200", description = "OK")})
     public void addProduct(@RequestBody ProductPostRequest productPostRequest) {
         productsService.addProduct(productPostRequest);
-
     }
-
-
-    // create patch function here
 
     @PatchMapping("/products/cart-add")
     @Operation(summary = "Add product to cart",
@@ -84,7 +77,7 @@ public class ProductsController {
             @ApiResponse(responseCode = "200", description = "You have products in cart"),
             @ApiResponse(responseCode = "403", description = "No products in cart")})
     public List<ProductCartResponse> findAllProductsInCart(@RequestParam Integer buyerId) {
-        List <ProductCartResponse> cartItems = productsService.getAllProductsInCart(buyerId);
+        List<ProductCartResponse> cartItems = productsService.getAllProductsInCart(buyerId);
         return cartItems;
     }
 
@@ -134,6 +127,4 @@ public class ProductsController {
         List<ProductFavoriteResponse> favoriteItems = favoriteService.findAllProductsInFavorite(buyerId);
         return favoriteItems;
     }
-
-
 }

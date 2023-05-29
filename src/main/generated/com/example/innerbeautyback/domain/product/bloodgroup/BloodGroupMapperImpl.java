@@ -8,14 +8,14 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-05-25T09:45:58+0300",
+    date = "2023-05-29T15:12:55+0300",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 @Component
 public class BloodGroupMapperImpl implements BloodGroupMapper {
 
     @Override
-    public BloodGroupResponse toDto(BloodGroup bloodGroup) {
+    public BloodGroupResponse toBloodGroupRequest(BloodGroup bloodGroup) {
         if ( bloodGroup == null ) {
             return null;
         }
@@ -29,14 +29,14 @@ public class BloodGroupMapperImpl implements BloodGroupMapper {
     }
 
     @Override
-    public List<BloodGroupResponse> toDtos(List<BloodGroup> bloodGroups) {
+    public List<BloodGroupResponse> toBloodgroupRequests(List<BloodGroup> bloodGroups) {
         if ( bloodGroups == null ) {
             return null;
         }
 
         List<BloodGroupResponse> list = new ArrayList<BloodGroupResponse>( bloodGroups.size() );
         for ( BloodGroup bloodGroup : bloodGroups ) {
-            list.add( toDto( bloodGroup ) );
+            list.add( toBloodGroupRequest( bloodGroup ) );
         }
 
         return list;

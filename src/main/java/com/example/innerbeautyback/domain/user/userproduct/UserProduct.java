@@ -35,7 +35,4 @@ public class UserProduct {
 
     @Column(name = "timestamp")
     private LocalDateTime timestamp;
-
-
-
 }

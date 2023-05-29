@@ -10,7 +10,6 @@ public interface BloodGroupMapper {
 
     @Mapping(source = "id",target = "bloodGroupTypeId")
     @Mapping(source = "type", target = "bloodGroupTypeName")
-    BloodGroupResponse toDto(BloodGroup bloodGroup);
-
-    List<BloodGroupResponse> toDtos(List<BloodGroup> bloodGroups);
+    BloodGroupResponse toBloodGroupRequest(BloodGroup bloodGroup);
+    List<BloodGroupResponse> toBloodgroupRequests(List<BloodGroup> bloodGroups);
 }

@@ -28,7 +28,6 @@ public class ProductService {
         return productRepository.getProductBy(productId, Status.ACTIVE.getLetter());
     }
 
-
     public Product getProductBy(Integer productId) {
         return productRepository.findById(productId).get();
     }

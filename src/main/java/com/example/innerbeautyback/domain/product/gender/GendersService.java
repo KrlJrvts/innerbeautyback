@@ -10,7 +10,6 @@ public class GendersService {
 
     @Resource
     private GenderRepository genderRepository;
-
     public List<Gender> getGenders() {
         return genderRepository.findAll();
     }

@@ -12,9 +12,6 @@ public interface GenderMapper {
 
     @Mapping(source = "id", target = "genderId")
     @Mapping(source = "name", target = "genderName")
-
     GenderResponse toDto(Gender gender);
-
-
     List<GenderResponse> toDtos(List<Gender> genders);
 }

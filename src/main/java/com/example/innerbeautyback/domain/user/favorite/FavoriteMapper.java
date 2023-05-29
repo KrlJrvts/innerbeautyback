@@ -12,7 +12,6 @@ import java.util.List;
 @Mapper
 public interface FavoriteMapper {
 
-
     @Mapping(source = "product.category.name", target = "productName")
     @Mapping(source = "product.age", target = "productAge")
     @Mapping(source = "product.description", target = "productDescription")
@@ -21,7 +20,6 @@ public interface FavoriteMapper {
     @Mapping(source = "product.bloodgroup.type", target = "bloodgroupType")
     @Mapping(source = "product.image", target = "imageData", qualifiedByName = "imageToImageData")
     @Mapping(source = "product.availableAt", target = "productAvailableAt")
-
     ProductFavoriteResponse toProductFavoriteResponse(Favorite favorite);
     List<ProductFavoriteResponse> toProductFavoriteResponses(List<Favorite> favorites);
 
