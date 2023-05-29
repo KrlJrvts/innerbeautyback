@@ -2,10 +2,7 @@ package com.example.innerbeautyback.business.products;
 
 import com.example.innerbeautyback.business.category.CategoriesService;
 import com.example.innerbeautyback.business.category.CategoryResponse;
-import com.example.innerbeautyback.business.products.Dtos.ProductCartResponse;
-import com.example.innerbeautyback.business.products.Dtos.ProductPostRequest;
-import com.example.innerbeautyback.business.products.Dtos.ProductResponse;
-import com.example.innerbeautyback.business.products.Dtos.ProductsSearchRequest;
+import com.example.innerbeautyback.business.products.Dtos.*;
 import com.example.innerbeautyback.domain.user.favorite.FavoriteService;
 import com.example.innerbeautyback.infrastructure.error.ApiError;
 import io.swagger.v3.oas.annotations.Operation;
@@ -123,6 +120,19 @@ public class ProductsController {
             @ApiResponse(responseCode = "403", description = "Requested Product not found")})
     public void addProductToFavorite(@RequestParam Integer buyerId, @RequestParam Integer productId) {
         productsService.addOrRemoveProductFromFavorite(buyerId, productId);
+    }
+
+    @GetMapping("/products/favorite")
+    @Operation(summary = "Returns products in favorite",
+            description = """
+                    Products in favorite are returned based on buyerId and there will be displayed categoryName, countryName, bloodgroupName, 
+                     genderName, age, productDate, productDescription, productPrice, productImage,""")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "You have products in favorite"),
+            @ApiResponse(responseCode = "403", description = "No products in favorite")})
+    public List<ProductFavoriteResponse> findAllProductsInFavorite(@RequestParam Integer buyerId) {
+        List<ProductFavoriteResponse> favoriteItems = favoriteService.findAllProductsInFavorite(buyerId);
+        return favoriteItems;
     }
 
 
