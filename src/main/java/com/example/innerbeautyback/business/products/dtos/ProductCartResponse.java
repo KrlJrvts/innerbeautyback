@@ -1,4 +1,4 @@
-package com.example.innerbeautyback.business.products.Dtos;
+package com.example.innerbeautyback.business.products.dtos;
 
 
 import lombok.AllArgsConstructor;
@@ -8,7 +8,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductFavoriteResponse {
+public class ProductCartResponse {
+    private Integer productId;
     private String productName;
     private Integer productAge;
     private String productDescription;
@@ -17,6 +18,7 @@ public class ProductFavoriteResponse {
     private String genderName;
     private String bloodgroupType;
     private String imageData;
+    private String sellerEmail;
     private String productAvailableAt;
 
 }

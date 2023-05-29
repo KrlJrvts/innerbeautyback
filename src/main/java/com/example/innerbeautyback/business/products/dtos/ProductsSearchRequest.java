@@ -1,4 +1,4 @@
-package com.example.innerbeautyback.business.products.Dtos;
+package com.example.innerbeautyback.business.products.dtos;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;

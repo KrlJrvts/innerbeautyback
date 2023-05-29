@@ -3,7 +3,7 @@ package com.example.innerbeautyback.business.products;
 import com.example.innerbeautyback.business.Status;
 import com.example.innerbeautyback.business.bloodgroup.BloodGroupsService;
 import com.example.innerbeautyback.business.gender.GenderService;
-import com.example.innerbeautyback.business.products.Dtos.*;
+import com.example.innerbeautyback.business.products.dtos.*;
 import com.example.innerbeautyback.domain.country.CountryService;
 import com.example.innerbeautyback.domain.image.Image;
 import com.example.innerbeautyback.domain.image.ImageService;

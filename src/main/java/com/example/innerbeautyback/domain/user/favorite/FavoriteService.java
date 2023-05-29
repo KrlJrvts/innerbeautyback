@@ -1,6 +1,6 @@
 package com.example.innerbeautyback.domain.user.favorite;
 
-import com.example.innerbeautyback.business.products.Dtos.ProductFavoriteResponse;
+import com.example.innerbeautyback.business.products.dtos.ProductFavoriteResponse;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 

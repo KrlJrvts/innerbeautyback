@@ -28,7 +28,7 @@ public class UserProductService {
     }
 
     public void deactivateProductFromCart(Integer buyerId) {
-        List <UserProduct>  userProducts = userProductRepository.getProductsInCartBy(Status.CART.getLetter(), buyerId);
+        List<UserProduct> userProducts = userProductRepository.getProductsInCartBy(Status.CART.getLetter(), buyerId);
         for (UserProduct userProduct : userProducts) {
             userProduct.getProduct().setStatus(Status.DELETED.getLetter());
             userProductRepository.save(userProduct);

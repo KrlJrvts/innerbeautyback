@@ -1,7 +1,7 @@
 package com.example.innerbeautyback.domain.user.userproduct;
 
 import com.example.innerbeautyback.business.Status;
-import com.example.innerbeautyback.business.products.Dtos.ProductCartResponse;
+import com.example.innerbeautyback.business.products.dtos.ProductCartResponse;
 import com.example.innerbeautyback.domain.image.Image;
 import com.example.innerbeautyback.util.ImageUtil;
 import org.mapstruct.*;

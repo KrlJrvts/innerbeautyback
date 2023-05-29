@@ -1,6 +1,6 @@
 package com.example.innerbeautyback.domain.user.favorite;
 
-import com.example.innerbeautyback.business.products.Dtos.ProductFavoriteResponse;
+import com.example.innerbeautyback.business.products.dtos.ProductFavoriteResponse;
 import com.example.innerbeautyback.domain.image.Image;
 import com.example.innerbeautyback.util.ImageUtil;
 import org.mapstruct.Mapper;

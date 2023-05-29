@@ -2,7 +2,7 @@ package com.example.innerbeautyback.business.products;
 
 import com.example.innerbeautyback.business.category.CategoriesService;
 import com.example.innerbeautyback.business.category.CategoryResponse;
-import com.example.innerbeautyback.business.products.Dtos.*;
+import com.example.innerbeautyback.business.products.dtos.*;
 import com.example.innerbeautyback.domain.user.favorite.FavoriteService;
 import com.example.innerbeautyback.infrastructure.error.ApiError;
 import io.swagger.v3.oas.annotations.Operation;
@@ -75,8 +75,7 @@ public class ProductsController {
             @ApiResponse(responseCode = "200", description = "You have products in cart"),
             @ApiResponse(responseCode = "403", description = "No products in cart")})
     public List<ProductCartResponse> findAllProductsInCart(@RequestParam Integer buyerId) {
-        List<ProductCartResponse> cartItems = productsService.getAllProductsInCart(buyerId);
-        return cartItems;
+        return productsService.getAllProductsInCart(buyerId);
     }
 
     @DeleteMapping("/products/cart-delete")

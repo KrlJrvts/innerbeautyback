@@ -2,7 +2,7 @@ package com.example.innerbeautyback.domain.product;
 
 
 import com.example.innerbeautyback.business.Status;
-import com.example.innerbeautyback.business.products.Dtos.ProductsSearchRequest;
+import com.example.innerbeautyback.business.products.dtos.ProductsSearchRequest;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
