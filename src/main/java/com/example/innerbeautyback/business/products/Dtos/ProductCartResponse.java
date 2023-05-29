@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductCartResponse {
+    private Integer productId;
     private String productName;
     private Integer productAge;
     private String productDescription;
