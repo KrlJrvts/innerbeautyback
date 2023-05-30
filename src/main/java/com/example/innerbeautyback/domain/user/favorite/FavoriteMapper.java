@@ -22,6 +22,7 @@ public interface FavoriteMapper {
     @Mapping(source = "product.bloodgroup.type", target = "bloodgroupType")
     @Mapping(source = "product.image", target = "imageData", qualifiedByName = "imageToImageData")
     @Mapping(source = "product.availableAt", target = "productAvailableAt")
+    @Mapping(source = "product.status", target = "Status")
     ProductFavoriteResponse toProductFavoriteResponse(Favorite favorite);
     List<ProductFavoriteResponse> toProductFavoriteResponses(List<Favorite> favorites);
 

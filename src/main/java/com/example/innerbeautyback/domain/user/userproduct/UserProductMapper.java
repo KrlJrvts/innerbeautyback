@@ -21,6 +21,7 @@ public interface UserProductMapper {
     @Mapping(source = "product.price", target = "productPrice")
     @Mapping(source = "product.gender.name", target = "genderName")
     @Mapping(source = "product.availableAt", target = "productAvailableAt")
+    @Mapping(source = "product.id", target = "productId")
     ProductCart toProductCartResponse(UserProduct userProduct);
     List<ProductCart> toProductCartResponses(List<UserProduct> userProducts);
 

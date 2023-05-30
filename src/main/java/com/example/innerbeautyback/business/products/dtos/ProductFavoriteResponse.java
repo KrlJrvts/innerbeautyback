@@ -19,5 +19,6 @@ public class ProductFavoriteResponse {
     private String bloodgroupType;
     private String imageData;
     private String productAvailableAt;
+    private String Status;
 
 }
