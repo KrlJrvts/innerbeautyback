@@ -38,7 +38,7 @@ public class FavoriteService {
     }
 
     public List<ProductFavoriteResponse> findAllProductsInFavorite(Integer buyerId) {
-        List <Favorite> favorites = favoriteRepository.findAllByBuyerId(buyerId);
+        List <Favorite> favorites = favoriteRepository.findAllBy(buyerId);
         return favoriteMapper.toProductFavoriteResponses(favorites);
     }
 }
