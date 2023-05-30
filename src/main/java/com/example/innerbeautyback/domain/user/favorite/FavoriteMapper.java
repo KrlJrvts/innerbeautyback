@@ -13,6 +13,7 @@ import java.util.List;
 public interface FavoriteMapper {
 
     @Mapping(source = "product.category.name", target = "productName")
+    @Mapping(source = "product.id", target = "productId")
     @Mapping(source = "product.age", target = "productAge")
     @Mapping(source = "product.description", target = "productDescription")
     @Mapping(source = "product.price", target = "productPrice")
