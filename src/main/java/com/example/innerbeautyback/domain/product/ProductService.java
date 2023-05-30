@@ -31,4 +31,8 @@ public class ProductService {
     public Product getProductBy(Integer productId) {
         return productRepository.findById(productId).get();
     }
+
+    public void addProducts(List<Product> products) {
+        productRepository.saveAll(products);
+    }
 }

@@ -78,15 +78,16 @@ public class ProductsController {
         return productsService.getAllProductsInCart(buyerId);
     }
 
-    @DeleteMapping("/products/cart-delete")
+    @PatchMapping("/products/cart-buy")
     @Operation(summary = "Delete products from cart",
             description = "Product is deleted from cart based on productId and buyerId")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Product deleted from cart"),
             @ApiResponse(responseCode = "403", description = "Requested Product not found")})
-    public void deleteProductFromCart(@RequestParam Integer buyerId) {
-        productsService.deleteProductFromCart(buyerId);
+    public void buyAllProductsFromCart(@RequestParam Integer buyerId) {
+        productsService.buyAllProductsFromCart(buyerId);
     }
+
 
     @PatchMapping("/products/cart-remove")
     @Operation(summary = "Remove product from cart",
