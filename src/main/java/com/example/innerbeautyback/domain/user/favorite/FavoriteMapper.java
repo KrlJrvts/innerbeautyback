@@ -13,10 +13,12 @@ import java.util.List;
 public interface FavoriteMapper {
 
     @Mapping(source = "product.category.name", target = "productName")
+    @Mapping(source = "product.id", target = "productId")
     @Mapping(source = "product.age", target = "productAge")
     @Mapping(source = "product.description", target = "productDescription")
     @Mapping(source = "product.price", target = "productPrice")
     @Mapping(source = "product.country.name", target = "countryName")
+    @Mapping(source= "product.gender.name", target = "genderName")
     @Mapping(source = "product.bloodgroup.type", target = "bloodgroupType")
     @Mapping(source = "product.image", target = "imageData", qualifiedByName = "imageToImageData")
     @Mapping(source = "product.availableAt", target = "productAvailableAt")
