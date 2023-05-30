@@ -50,13 +50,17 @@ public class UsersService {
     }
 
     @Transactional
-    public User editUser(Integer userId, UserEditRequest userEditRequest) {
+    public void editUser(Integer userId, UserEditRequest userEditRequest) {
         User user = userService.getUserBy(userId);
         userMapper.toEditUser(userEditRequest, user);
         handleImageChange(user, userEditRequest.getUserImage());
         addImageIfPresent(user.getImage());
         userService.addUser(user);
-        return user;
+    }
+
+    public UserEditRequest getUser(Integer userId) {
+        User user = userService.getUserBy(userId);
+        return userMapper.toEditRequest(user);
     }
 
     public void addImageIfPresent(Image image) {
@@ -84,4 +88,6 @@ public class UsersService {
     private static boolean newImageIsRequired(String imageDataFromUpdate, Image currentImage) {
         return currentImage == null && !imageDataFromUpdate.isEmpty();
     }
+
+
 }

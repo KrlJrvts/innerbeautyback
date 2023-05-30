@@ -18,9 +18,10 @@ public class ValidationService {
         }
     }
 
-    public static void validateProductInFavorites(boolean productInFavorites) {
-        if (productInFavorites) {
-            throw new BusinessException(Error.PRODUCT_IN_FAVORITES.getMessage(), Error.PRODUCT_IN_FAVORITES.getErrorCode());
+    public static void validateProductInCart(boolean productInCart) {
+        if (!productInCart){
+            throw new BusinessException(Error.PRODUCT_IN_CART.getMessage(), Error.PRODUCT_IN_CART.getErrorCode());
         }
     }
+
 }

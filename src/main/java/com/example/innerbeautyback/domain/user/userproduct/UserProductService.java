@@ -1,6 +1,7 @@
 package com.example.innerbeautyback.domain.user.userproduct;
 
 import com.example.innerbeautyback.business.Status;
+import com.example.innerbeautyback.validation.ValidationService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,7 @@ public class UserProductService {
     private UserProductRepository userProductRepository;
 
     public void addUserProduct(UserProduct userProduct) {
+
         userProductRepository.save(userProduct);
     }
 
@@ -33,6 +35,8 @@ public class UserProductService {
 
     public void removeProductFromCart(Integer buyerId, Integer productId) {
         UserProduct userProduct = userProductRepository.getProductBy(productId);
+        boolean productInCart = userProduct.getBuyer() != null && userProduct.getBuyer().getId().equals(buyerId);
+        ValidationService.validateProductInCart(productInCart);
         userProduct.getProduct().setStatus(Status.ACTIVE.getLetter());
         userProduct.setBuyer(null);
         userProduct.setTimestamp(null);
