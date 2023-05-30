@@ -29,19 +29,17 @@ public class UsersController {
                User enters password, password confirmaltion and/or new image. And will update named fields in database.
             """)
     @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "User edit completed successfully!"), @ApiResponse(responseCode = "403", description = "Profile edit failed!")})
-    public UserEditRequest editUser(@RequestParam Integer userId, @RequestBody UserEditRequest userEditRequest) {
+    public void editUser(@RequestParam Integer userId, @RequestBody UserEditRequest userEditRequest) {
         usersService.editUser(userId, userEditRequest);
-        return userEditRequest;
     }
 
-    @GetMapping("/user/{userId}")
+    @GetMapping("/user/get-data/")
     @Operation(summary = "Get user by userId", description = """
-            User enters userId. And will get user by userId.
+            User enters userId. And will get back current password and image.
             """)
     @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "User get completed successfully!"),
             @ApiResponse(responseCode = "403", description = "User get failed!")})
     public UserEditRequest getUser(@RequestParam Integer userId) {
-        UserEditRequest userEditRequest =usersService.getUser(userId);
-        return userEditRequest;
+        return usersService.getUser(userId);
     }
 }
