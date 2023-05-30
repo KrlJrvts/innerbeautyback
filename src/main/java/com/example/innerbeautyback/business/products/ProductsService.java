@@ -135,8 +135,8 @@ public class ProductsService {
         return totalPrice;
     }
 
-    public void deleteProductFromCart(Integer buyerId) {
-        userProductService.deactivateProductFromCart(buyerId);
+    public void buyAllProductsFromCart(Integer buyerId) {
+        userProductService.buyProductsFromCart(buyerId);
     }
 
     public void removeProductFromCart(Integer buyerId, Integer productId) {

@@ -8,7 +8,8 @@ public enum Status {
 
     ACTIVE("A"),
     DELETED("D"),
-    CART("C");
+    CART("C"),
+    FINISHED("F");
 
     private final String letter;
 
