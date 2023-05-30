@@ -80,6 +80,3 @@ INSERT INTO public.user_product (id, product_id, seller_id, buyer_id) VALUES (DE
 INSERT INTO public.user_product (id, product_id, seller_id, buyer_id) VALUES (DEFAULT, 7, 2, null);
 INSERT INTO public.user_product (id, product_id, seller_id, buyer_id) VALUES (DEFAULT, 8, 3, null);
 -- favourite
-INSERT INTO public.favorite (id, buyer_id, product_id) VALUES (DEFAULT, 2, 4);
-INSERT INTO public.favorite (id, buyer_id, product_id) VALUES (DEFAULT, 2, 2);
-INSERT INTO public.favorite (id, buyer_id, product_id) VALUES (DEFAULT, 3, 4);
