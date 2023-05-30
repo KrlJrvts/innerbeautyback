@@ -1,6 +1,5 @@
 package com.example.innerbeautyback.business.products.dtos;
 
-import com.example.innerbeautyback.domain.product.Product;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,9 +7,6 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-/**
- * A DTO for the {@link Product} entity
- */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
