@@ -33,4 +33,15 @@ public class UsersController {
         usersService.editUser(userId, userEditRequest);
         return userEditRequest;
     }
+
+    @GetMapping("/user/{userId}")
+    @Operation(summary = "Get user by userId", description = """
+            User enters userId. And will get user by userId.
+            """)
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "User get completed successfully!"),
+            @ApiResponse(responseCode = "403", description = "User get failed!")})
+    public UserEditRequest getUser(@RequestParam Integer userId) {
+        UserEditRequest userEditRequest =usersService.getUser(userId);
+        return userEditRequest;
+    }
 }

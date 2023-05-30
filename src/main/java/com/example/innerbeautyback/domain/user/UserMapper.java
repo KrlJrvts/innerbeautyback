@@ -26,6 +26,16 @@ public interface UserMapper {
     @Mapping(source = "userImage", target = "image" , qualifiedByName = "imageDataToImage")
     User toEditUser(UserEditRequest userEditRequest, @MappingTarget User user);
 
+
+
+    @Mapping(source = "image", target = "userImage", qualifiedByName = "imageToImageData")
+    @Mapping(source = "password", target = "userPassword")
+    UserEditRequest toEditRequest(User user);
+
+
+
+
+
     @Named("imageDataToImage")
     static Image imageDataToImage(String imageData) {
         if (imageData.isEmpty()) {

@@ -59,6 +59,11 @@ public class UsersService {
         return user;
     }
 
+    public UserEditRequest getUser(Integer userId) {
+        User user = userService.getUserBy(userId);
+        return userMapper.toEditRequest(user);
+    }
+
     public void addImageIfPresent(Image image) {
         if (ImageUtil.imageIsPresent(image)) {
             imageService.addImage(image);
@@ -84,4 +89,6 @@ public class UsersService {
     private static boolean newImageIsRequired(String imageDataFromUpdate, Image currentImage) {
         return currentImage == null && !imageDataFromUpdate.isEmpty();
     }
+
+
 }
