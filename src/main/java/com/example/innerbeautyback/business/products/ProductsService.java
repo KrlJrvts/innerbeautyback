@@ -66,7 +66,7 @@ public class ProductsService {
     private UserProductMapper userProductMapper;
 
     @Resource
-    private FavoriteMapper  favoriteMapper;
+    private FavoriteMapper favoriteMapper;
 
     public List<ProductResponse> getProductsBy(ProductsSearchRequest request) {
         List<Product> products = productService.getProducts(request);
@@ -112,9 +112,27 @@ public class ProductsService {
     }
 
 
-    public List<ProductCartResponse> getAllProductsInCart(Integer buyerId) {
+    public ProductCartResponse getAllProductsInCart(Integer buyerId) {
         List<UserProduct> userProducts = userProductService.getAllProductsInCart(buyerId);
-        return userProductMapper.toProductCartResponses(userProducts);
+
+
+        Integer totalPrice = getTotalPrice(userProducts);
+        ProductCartResponse productCartResponse = new ProductCartResponse();
+        productCartResponse.setTotalPrice(totalPrice);
+        List<ProductCart> products = userProductMapper.toProductCartResponses(userProducts);
+        productCartResponse.setProducts(products);
+        return productCartResponse;
+    }
+
+    private static Integer getTotalPrice(List<UserProduct> userProducts) {
+        Integer totalPrice = 0;
+        for (UserProduct userProduct : userProducts) {
+            Product product = userProduct.getProduct();
+            Integer price = product.getPrice();
+            totalPrice += price;
+
+        }
+        return totalPrice;
     }
 
     public void deleteProductFromCart(Integer buyerId) {

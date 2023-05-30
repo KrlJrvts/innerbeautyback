@@ -1,7 +1,7 @@
 package com.example.innerbeautyback.domain.product;
 
 import com.example.innerbeautyback.business.Status;
-import com.example.innerbeautyback.business.products.dtos.ProductCartResponse;
+import com.example.innerbeautyback.business.products.dtos.ProductCart;
 import com.example.innerbeautyback.business.products.dtos.ProductPostRequest;
 import com.example.innerbeautyback.business.products.dtos.ProductResponse;
 import com.example.innerbeautyback.domain.image.Image;
@@ -35,7 +35,7 @@ public interface ProductMapper {
     @Mapping(source ="productImage", target = "image", qualifiedByName = "imageDataToImage")
     Product toAddProduct(ProductPostRequest productPostRequest);
 
-    ProductCartResponse toProductCartResponse(Product product);
+    ProductCart toProductCartResponse(Product product);
     List <ProductResponse> toProductResponse(List<Product> products);
 
 
