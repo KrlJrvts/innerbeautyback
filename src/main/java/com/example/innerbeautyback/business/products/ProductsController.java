@@ -74,7 +74,7 @@ public class ProductsController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "You have products in cart"),
             @ApiResponse(responseCode = "403", description = "No products in cart")})
-    public List<ProductCartResponse> findAllProductsInCart(@RequestParam Integer buyerId) {
+    public ProductCartResponse findAllProductsInCart(@RequestParam Integer buyerId) {
         return productsService.getAllProductsInCart(buyerId);
     }
 

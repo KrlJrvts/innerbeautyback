@@ -1,7 +1,7 @@
 package com.example.innerbeautyback.domain.user.userproduct;
 
 import com.example.innerbeautyback.business.Status;
-import com.example.innerbeautyback.business.products.dtos.ProductCartResponse;
+import com.example.innerbeautyback.business.products.dtos.ProductCart;
 import com.example.innerbeautyback.domain.image.Image;
 import com.example.innerbeautyback.util.ImageUtil;
 import org.mapstruct.*;
@@ -21,8 +21,8 @@ public interface UserProductMapper {
     @Mapping(source = "product.price", target = "productPrice")
     @Mapping(source = "product.gender.name", target = "genderName")
     @Mapping(source = "product.availableAt", target = "productAvailableAt")
-    ProductCartResponse toProductCartResponse(UserProduct userProduct);
-    List<ProductCartResponse> toProductCartResponses(List<UserProduct> userProducts);
+    ProductCart toProductCartResponse(UserProduct userProduct);
+    List<ProductCart> toProductCartResponses(List<UserProduct> userProducts);
 
     @Named("imageToImageData")
     static String imageToImageData(Image image) {
