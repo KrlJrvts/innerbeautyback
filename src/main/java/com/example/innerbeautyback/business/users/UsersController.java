@@ -8,11 +8,12 @@ import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/user")
 public class UsersController {
     @Resource
     private UsersService usersService;
 
-    @PostMapping("/user/register")
+    @PostMapping("/register")
     @Operation(summary = "Register new user by email, password, firstName, lastName", description = """
             User enters email, password, firstName, lastName. And will get automatically userId, roleName,
             status. System also checks if email is already in use. If it is, error with errorCode 112 is thrown""")
@@ -24,7 +25,7 @@ public class UsersController {
         usersService.addUser(userRequest);
     }
 
-    @PutMapping("/user/edit")
+    @PutMapping("/edit")
     @Operation(summary = "Edit user by password, image", description = """
                User enters password, password confirmaltion and/or new image. And will update named fields in database.
             """)
@@ -33,7 +34,7 @@ public class UsersController {
         usersService.editUser(userId, userEditRequest);
     }
 
-    @GetMapping("/user/get-data/")
+    @GetMapping("/get-data/")
     @Operation(summary = "Get user by userId", description = """
             User enters userId. And will get back current password and image.
             """)

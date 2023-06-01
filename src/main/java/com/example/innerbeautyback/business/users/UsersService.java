@@ -77,6 +77,7 @@ public class UsersService {
         if (newImageIsRequired(imageDataFromUpdate, currentImage)) {
             Image newImage = new Image(ImageUtil.base64ImageDataToByteArray(imageDataFromUpdate));
             user.setImage(newImage);
+            imageService.addImage(newImage);
         }
     }
 
@@ -86,7 +87,10 @@ public class UsersService {
     }
 
     private static boolean newImageIsRequired(String imageDataFromUpdate, Image currentImage) {
-        return currentImage == null && !imageDataFromUpdate.isEmpty();
+
+        boolean currentImageNull = currentImage == null;
+        boolean imageDataIsNotEmpty = !imageDataFromUpdate.isEmpty();
+        return currentImageNull && imageDataIsNotEmpty;
     }
 
 

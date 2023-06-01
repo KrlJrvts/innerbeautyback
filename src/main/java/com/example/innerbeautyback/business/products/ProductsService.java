@@ -14,7 +14,6 @@ import com.example.innerbeautyback.domain.product.category.CategoryService;
 import com.example.innerbeautyback.domain.user.User;
 import com.example.innerbeautyback.domain.user.UserService;
 import com.example.innerbeautyback.domain.user.favorite.Favorite;
-import com.example.innerbeautyback.domain.user.favorite.FavoriteMapper;
 import com.example.innerbeautyback.domain.user.favorite.FavoriteService;
 import com.example.innerbeautyback.domain.user.userproduct.UserProduct;
 import com.example.innerbeautyback.domain.user.userproduct.UserProductMapper;
@@ -65,9 +64,6 @@ public class ProductsService {
     @Resource
     private UserProductMapper userProductMapper;
 
-    @Resource
-    private FavoriteMapper favoriteMapper;
-
     public List<ProductResponse> getProductsBy(ProductsSearchRequest request) {
         List<Product> products = productService.getProducts(request);
         List<ProductResponse> productResponse = productMapper.toProductResponse(products);
@@ -81,11 +77,7 @@ public class ProductsService {
     @Transactional
     public void addProduct(ProductPostRequest productPostRequest) {
         Product product = productMapper.toAddProduct(productPostRequest);
-
-        product.setCategory(categoryService.findById(productPostRequest.getProductCategoryId()));
-        product.setCountry(countryService.findById(productPostRequest.getProductCountryId()));
-        product.setBloodgroup(bloodGroupsService.findById(productPostRequest.getProductBloodgroupId()));
-        product.setGender(genderService.findById(productPostRequest.getProductGenderId()));
+        setAddedProductsData(productPostRequest, product);
 
         addImageIfPresent(product.getImage());
         productService.addProduct(product);
@@ -95,6 +87,8 @@ public class ProductsService {
         userProduct.setSeller(userService.getUserBy(productPostRequest.getProductSellerId()));
         userProductService.addUserProduct(userProduct);
     }
+
+
 
     public void addProductToCart(Integer productId, Integer buyerId) {
         UserProduct userProduct = userProductService.getProductBy(productId);
@@ -111,10 +105,8 @@ public class ProductsService {
         }
     }
 
-
     public ProductCartResponse getAllProductsInCart(Integer buyerId) {
         List<UserProduct> userProducts = userProductService.getAllProductsInCart(buyerId);
-
 
         Integer totalPrice = getTotalPrice(userProducts);
         ProductCartResponse productCartResponse = new ProductCartResponse();
@@ -124,13 +116,19 @@ public class ProductsService {
         return productCartResponse;
     }
 
+    private void setAddedProductsData(ProductPostRequest productPostRequest, Product product) {
+        product.setCategory(categoryService.findById(productPostRequest.getProductCategoryId()));
+        product.setCountry(countryService.findById(productPostRequest.getProductCountryId()));
+        product.setBloodgroup(bloodGroupsService.findById(productPostRequest.getProductBloodgroupId()));
+        product.setGender(genderService.findById(productPostRequest.getProductGenderId()));
+    }
+
     private static Integer getTotalPrice(List<UserProduct> userProducts) {
         Integer totalPrice = 0;
         for (UserProduct userProduct : userProducts) {
             Product product = userProduct.getProduct();
             Integer price = product.getPrice();
             totalPrice += price;
-
         }
         return totalPrice;
     }
