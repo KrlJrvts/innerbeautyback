@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/products")
 public class ProductsController {
 
     @Resource
@@ -27,7 +28,7 @@ public class ProductsController {
     @Resource
     private FavoriteService favoriteService;
 
-    @GetMapping("/products/categories")
+    @GetMapping("/categories")
     @Operation(
             summary = "Returns all Product category names to storeView",
             description = " Returns product category names to storeView which shall be put under Product Category picture")
@@ -35,7 +36,7 @@ public class ProductsController {
         return categoriesService.getCategories();
     }
 
-    @PostMapping("/products/category-all")
+    @PostMapping("/category-all")
     @Operation(summary = "Returns products requested by categoryId,countryId and bloodgroupId, ",
             description = "When countryId and bloodgroupId is not chosen (0) then all products are listed ")
     @ApiResponses(value = {
@@ -45,7 +46,7 @@ public class ProductsController {
         return productsService.getProductsBy(productsSearchRequest);
     }
 
-    @PostMapping("/products/add")
+    @PostMapping("/add")
     @Operation(summary = "Add product to store",
             description = """
                     Product is added to database based on categoryId, countryId, bloodgroupId, genderId,
@@ -56,7 +57,7 @@ public class ProductsController {
         productsService.addProduct(productPostRequest);
     }
 
-    @PatchMapping("/products/cart-add")
+    @PatchMapping("/cart-add")
     @Operation(summary = "Add product to cart",
             description = "Product is added to cart based on productId, buyerId")
     @ApiResponses(value = {
@@ -66,7 +67,7 @@ public class ProductsController {
         productsService.addProductToCart(productId, buyerId);
     }
 
-    @GetMapping("/products/cart")
+    @GetMapping("/cart")
     @Operation(summary = "Returns products in cart",
             description = """
                     Products in cart are returned based on buyerId and there will be displayed categoryName, countryName, bloodgroupName, 
@@ -78,7 +79,7 @@ public class ProductsController {
         return productsService.getAllProductsInCart(buyerId);
     }
 
-    @PatchMapping("/products/cart-buy")
+    @PatchMapping("/cart-buy")
     @Operation(summary = "Delete products from cart",
             description = "Product is deleted from cart based on productId and buyerId")
     @ApiResponses(value = {
@@ -88,8 +89,7 @@ public class ProductsController {
         productsService.buyAllProductsFromCart(buyerId);
     }
 
-
-    @PatchMapping("/products/cart-remove")
+    @PatchMapping("/cart-remove")
     @Operation(summary = "Remove product from cart",
             description = "Product is removed from cart based on productId and buyerId")
     @ApiResponses(value = {
@@ -99,7 +99,7 @@ public class ProductsController {
         productsService.removeProductFromCart(buyerId, productId);
     }
 
-    @PatchMapping("/products/favorite-add")
+    @PatchMapping("/favorite-add")
     @Operation(summary = "Add product to favorite",
             description = """
                     Product is added to favorite based on productId and buyerId.
@@ -111,7 +111,7 @@ public class ProductsController {
         productsService.addOrRemoveProductFromFavorite(buyerId, productId);
     }
 
-    @GetMapping("/products/favorite")
+    @GetMapping("/favorite")
     @Operation(summary = "Returns products in favorite",
             description = """
                     Products in favorite are returned based on buyerId and there will be displayed categoryName, countryName, bloodgroupName, 
